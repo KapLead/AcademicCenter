@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AcademicCenter.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Discipline" Type="System.String" Scope="User">
+      <Value Profile="(Default)">"Компьютерные сети"</Value>
+    </Setting>
+    <Setting Name="Extensions" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;TXT&lt;/string&gt;
+  &lt;string&gt;DOC&lt;/string&gt;
+  &lt;string&gt;DOCX&lt;/string&gt;
+  &lt;string&gt;XLS&lt;/string&gt;
+  &lt;string&gt;XLSX&lt;/string&gt;
+  &lt;string&gt;PDF&lt;/string&gt;
+  &lt;string&gt;MOV&lt;/string&gt;
+  &lt;string&gt;AVI&lt;/string&gt;
+  &lt;string&gt;MP4&lt;/string&gt;
+  &lt;string&gt;MP3&lt;/string&gt;
+  &lt;string&gt;BMP&lt;/string&gt;
+  &lt;string&gt;JPEG&lt;/string&gt;
+  &lt;string&gt;PNG&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
