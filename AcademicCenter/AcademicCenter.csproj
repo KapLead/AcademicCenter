@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Core\cfg\ExtensionVariable.cs" />
     <Compile Include="Core\Configuration.cs" />
+    <Compile Include="Core\discipline\Discipline.cs" />
     <Compile Include="Core\doc\Document.cs" />
     <Compile Include="Core\JsonSettings.cs" />
     <Compile Include="Core\test\Test.cs" />
@@ -97,5 +98,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
