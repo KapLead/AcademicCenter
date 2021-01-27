@@ -53,6 +53,7 @@
     <Compile Include="Core\Configuration.cs" />
     <Compile Include="Core\doc\Document.cs" />
     <Compile Include="Core\JsonSettings.cs" />
+    <Compile Include="Core\test\Test.cs" />
     <Compile Include="Forms\FormSettings.cs">
       <SubType>Form</SubType>
     </Compile>
