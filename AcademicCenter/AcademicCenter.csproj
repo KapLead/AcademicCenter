@@ -55,6 +55,12 @@
     <Compile Include="Core\doc\Document.cs" />
     <Compile Include="Core\JsonSettings.cs" />
     <Compile Include="Core\test\Test.cs" />
+    <Compile Include="Core\ui\TestItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Core\ui\TestItem.Designer.cs">
+      <DependentUpon>TestItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Core\ui\TestUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -75,6 +81,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Core\ui\TestItem.resx">
+      <DependentUpon>TestItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Core\ui\TestUserControl.resx">
       <DependentUpon>TestUserControl.cs</DependentUpon>
     </EmbeddedResource>
