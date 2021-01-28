@@ -29,6 +29,7 @@ namespace AcademicCenter
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormComplex));
             this.комплексToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settings = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -40,6 +41,7 @@ namespace AcademicCenter
             this.listTest = new System.Windows.Forms.ListBox();
             this.startTest = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.pListTest.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -145,12 +147,24 @@ namespace AcademicCenter
             this.label1.Text = "ТЕСТЫ ПО ДИСЦИПЛИНЕ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label2
+            // 
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(10);
+            this.label2.Size = new System.Drawing.Size(821, 480);
+            this.label2.TabIndex = 2;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
             // FormComplex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(821, 480);
             this.Controls.Add(this.pListTest);
+            this.Controls.Add(this.label2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormComplex";
             this.Text = "Обучающе-тестирующий комплекс по учебной дисциплине ";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -171,6 +185,7 @@ namespace AcademicCenter
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listTest;
         private System.Windows.Forms.Button startTest;
+        private System.Windows.Forms.Label label2;
     }
 }
 

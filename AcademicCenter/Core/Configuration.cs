@@ -54,8 +54,13 @@ namespace AcademicCenter
             else
             {
                 var d = new Discipline {Descrition = "ГКУ НСИФ факультет информатики", Title = "Компьютерные сети", Tests = new List<Test>()};
-                var test = new Test { Descrition = "Ранжирование сетей", Title = "Тест №1", Type = Type.Контрольная};
-                var doc = new List<Document>(new[] {new Document { }});
+                var test = new Test { Descrition = "Ранжирование сетей", Title = "Тест №1", Type = Type.Обучение};
+                var doc = new List<Document>(new[]
+                {
+                    new Document { Name = "Одноранговая сеть", Path = "https://ru.wikipedia.org/wiki/Одноранговая_сеть" },
+                    new Document {Name = "Классовая адресация", Path = "https://ru.wikipedia.org/wiki/Классовая_адресация"},
+                    new Document {Name = "Сетевой адрес", Path = "https://ru.wikipedia.org/wiki/Сетевой_адрес"},
+                });
                 test.Items.Add(new Item
                 {
                     Question = "Укажите ранг сети : 192.168.0.1",

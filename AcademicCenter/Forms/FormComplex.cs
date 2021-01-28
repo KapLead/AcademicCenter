@@ -37,6 +37,19 @@ namespace AcademicCenter
             listTest.Items.Clear();
             listTest.Items.AddRange(Configuration.Disciplines[0].Tests.ToArray());
             pListTest.Visible = true;
+            Application.DoEvents();
+            new FormStudent().ShowDialog();
+            if (string.IsNullOrWhiteSpace(FormStudent.UserFamile) ||
+                string.IsNullOrWhiteSpace(FormStudent.UserFamile) ||
+                string.IsNullOrWhiteSpace(FormStudent.UserFamile) ||
+                string.IsNullOrWhiteSpace(FormStudent.UserFamile))
+            {
+                MessageBox.Show(@"Введены не полные данные. Тестирование не возможно", @"Завершение работы");
+                Close();
+            }
+
+            label2.Text = $"Тестируемый : студент группы(класса) '{FormStudent.UserGroup}'\r\n" +
+                          $"\t{FormStudent.UserFamile} {FormStudent.UserName} {FormStudent.UserOtchestvo}\r\n";
         }
 
         private void listTest_DrawItem(object sender, DrawItemEventArgs e)
@@ -60,6 +73,9 @@ namespace AcademicCenter
                 new Font(listTest.Font.FontFamily, 11f, FontStyle.Regular), Brushes.DimGray,
                 new RectangleF(e.Bounds.X+10,e.Bounds.Y+14, e.Bounds.Width-14, e.Bounds.Height), 
                 new StringFormat{LineAlignment = StringAlignment.Near, Alignment = StringAlignment.Near} );
+            e.Graphics.DrawString(t.Type.ToString(), 
+                new Font(listTest.Font.FontFamily, 13f, FontStyle.Regular),
+                t.Type==0?Brushes.RoyalBlue:Brushes.Green, new Point(e.Bounds.Right-150,e.Bounds.Y+5));
         }
 
         private TestUserControl test = null;
@@ -80,35 +96,46 @@ namespace AcademicCenter
 
         private void TestOnFinish(object sender, EventArgs e)
         {
-            test.Visible = false;
             Test t = (Test)listTest.Items[listTest.SelectedIndex];
-            if (t == null) return;
+            if (t == null)
+            {
+                test.Visible = false;
+                return;
+            }
             List<string> res = new List<string>();
-
+            res.Add($"\r\nТест: {t.Title} ({t.Descrition})");
             for (var i = 0; i < t.Items.Count; i++)
             {
                 Item item = t.Items[i];
-                res.Add($"{(i+1):00} Вопрос - {item.Question}");
+                res.Add($"{i+1} Вопрос - {item.Question}");
                 if(!test.testings[i].ret.All(s=>s))
-                    res[res.Count - 1] += $"ОШИБКА [===========]";
+                    res[res.Count - 1] += $"\t ОШИБКА [===========]";
                 else
                 {
-                    res[res.Count - 1] += $"ОК [{t.Items[i].Answers.FirstOrDefault(s=>s.IsCorrect)?.Text}]";
+                    res[res.Count - 1] += $"\t ВЕРНО [{t.Items[i].Answers.FirstOrDefault(s=>s.IsCorrect)?.Text}]";
                 }
             }
             string file;
             File.WriteAllLines(file=$"result{DateTime.Now:yyyyMMdd-hhmmss}.txt",res,Encoding.UTF8);
-            Process.Start(file);
+            foreach (string s in res) label2.Text += s + Environment.NewLine;
+            Process p = Process.Start(file);
+            p.EnableRaisingEvents = true;
+            p.Exited += (o, args) =>
+            {
+                test.Invoke(new Action((() =>
+                {
+                    test.Visible = false;
+                    pListTest.Visible = true;
+                })));
+            };
         }
 
-        private void listDisc_DrawItem(object sender, DrawItemEventArgs e)
+        private bool backend = true;
+        private void label2_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
+            backend = !backend;
+            if(backend) label2.SendToBack();
+            else label2.BringToFront();
         }
     }
 }
