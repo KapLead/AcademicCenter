@@ -4,7 +4,7 @@ namespace AcademicCenter
 {
     public class Test
     {
-        /// <summary> Содержимое теста </summary>
+        /// <summary> Вопросы теста </summary>
         public List<Item> Items { get; set; } = new List<Item>();
             
         /// <summary> Вид теста </summary>
