@@ -30,8 +30,7 @@ namespace AcademicCenter
         private void InitializeComponent()
         {
             this.lText = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ok = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lText
@@ -43,39 +42,27 @@ namespace AcademicCenter
             this.lText.Name = "lText";
             this.lText.Size = new System.Drawing.Size(546, 65);
             this.lText.TabIndex = 0;
-            this.lText.Text = "Наиболее полно, правильно перечислены характеристики компьютерной сети в списке:";
             // 
-            // checkBox1
+            // ok
             // 
-            this.checkBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.checkBox1.Location = new System.Drawing.Point(20, 75);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Padding = new System.Windows.Forms.Padding(10);
-            this.checkBox1.Size = new System.Drawing.Size(546, 44);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(485, 219);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 32);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "ОК";
-            this.button1.UseVisualStyleBackColor = true;
+            this.ok.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ok.Location = new System.Drawing.Point(485, 37);
+            this.ok.Name = "ok";
+            this.ok.Size = new System.Drawing.Size(91, 32);
+            this.ok.TabIndex = 2;
+            this.ok.Text = "ОК";
+            this.ok.UseVisualStyleBackColor = true;
+            this.ok.Click += new System.EventHandler(this.ok_Click);
             // 
             // TestItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.ok);
             this.Controls.Add(this.lText);
             this.Name = "TestItem";
             this.Padding = new System.Windows.Forms.Padding(20, 10, 20, 10);
-            this.Size = new System.Drawing.Size(586, 260);
+            this.Size = new System.Drawing.Size(586, 78);
             this.ResumeLayout(false);
 
         }
@@ -83,7 +70,6 @@ namespace AcademicCenter
         #endregion
 
         private System.Windows.Forms.Label lText;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ok;
     }
 }

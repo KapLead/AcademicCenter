@@ -40,7 +40,7 @@ namespace AcademicCenter
             this.pListTest = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.listTest = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.startTest = new System.Windows.Forms.Button();
             this.pListTest.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,7 +104,7 @@ namespace AcademicCenter
             this.pListTest.BackColor = System.Drawing.Color.White;
             this.pListTest.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pListTest.Controls.Add(this.listTest);
-            this.pListTest.Controls.Add(this.button1);
+            this.pListTest.Controls.Add(this.startTest);
             this.pListTest.Controls.Add(this.label1);
             this.pListTest.Location = new System.Drawing.Point(198, 98);
             this.pListTest.Name = "pListTest";
@@ -138,19 +138,20 @@ namespace AcademicCenter
             this.listTest.TabIndex = 1;
             this.listTest.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listTest_DrawItem);
             // 
-            // button1
+            // startTest
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.button1.Location = new System.Drawing.Point(0, 228);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(423, 42);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Приступить к выполнению теста";
-            this.button1.UseVisualStyleBackColor = false;
+            this.startTest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.startTest.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.startTest.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.startTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.startTest.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.startTest.Location = new System.Drawing.Point(0, 228);
+            this.startTest.Name = "startTest";
+            this.startTest.Size = new System.Drawing.Size(423, 42);
+            this.startTest.TabIndex = 2;
+            this.startTest.Text = "Приступить к выполнению теста";
+            this.startTest.UseVisualStyleBackColor = false;
+            this.startTest.Click += new System.EventHandler(this.startTest_Click);
             // 
             // FormComplex
             // 
@@ -182,7 +183,7 @@ namespace AcademicCenter
         private System.Windows.Forms.Panel pListTest;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listTest;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button startTest;
     }
 }
 

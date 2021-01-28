@@ -1,5 +1,5 @@
 ﻿
-namespace AcademicCenter.Core.ui
+namespace AcademicCenter
 {
     partial class TestUserControl
     {
@@ -35,7 +35,9 @@ namespace AcademicCenter.Core.ui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.Name = "TestUserControl";
+            this.Padding = new System.Windows.Forms.Padding(10);
             this.Size = new System.Drawing.Size(707, 457);
             this.ResumeLayout(false);
 
