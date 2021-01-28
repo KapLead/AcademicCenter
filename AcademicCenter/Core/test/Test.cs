@@ -31,7 +31,6 @@ namespace AcademicCenter
         /// <summary> Ответ </summary>
         public class Answer
         {
-
             /// <summary> Текст ответа </summary>
             public string Text { get; set; }
             

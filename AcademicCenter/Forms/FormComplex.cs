@@ -44,6 +44,14 @@ namespace AcademicCenter
             if(e.Index<0) return;
             Test t = (Test) listTest.Items[e.Index];
             if(t==null) return;
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+                e = new DrawItemEventArgs(e.Graphics,
+                    e.Font,
+                    e.Bounds,
+                    e.Index,
+                    e.State ^ DrawItemState.Selected,
+                    e.ForeColor,
+                    Color.Silver);
             e.DrawBackground();
             e.Graphics.DrawString(Configuration.Disciplines[0].Title??"..", 
                 new Font(listTest.Font.FontFamily,13f, FontStyle.Bold), 
@@ -91,6 +99,16 @@ namespace AcademicCenter
             string file;
             File.WriteAllLines(file=$"result{DateTime.Now:yyyyMMdd-hhmmss}.txt",res,Encoding.UTF8);
             Process.Start(file);
+        }
+
+        private void listDisc_DrawItem(object sender, DrawItemEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -29,7 +29,6 @@ namespace AcademicCenter
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.комплексToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settings = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -38,19 +37,12 @@ namespace AcademicCenter
             this.тестыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pListTest = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.listTest = new System.Windows.Forms.ListBox();
             this.startTest = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.pListTest.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(821, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // комплексToolStripMenuItem
             // 
@@ -101,28 +93,17 @@ namespace AcademicCenter
             // 
             // pListTest
             // 
+            this.pListTest.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pListTest.BackColor = System.Drawing.Color.White;
             this.pListTest.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pListTest.Controls.Add(this.listTest);
             this.pListTest.Controls.Add(this.startTest);
             this.pListTest.Controls.Add(this.label1);
-            this.pListTest.Location = new System.Drawing.Point(198, 98);
+            this.pListTest.Location = new System.Drawing.Point(206, 100);
             this.pListTest.Name = "pListTest";
-            this.pListTest.Size = new System.Drawing.Size(425, 272);
+            this.pListTest.Size = new System.Drawing.Size(424, 272);
             this.pListTest.TabIndex = 1;
             this.pListTest.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.DimGray;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(423, 26);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "ДОСТУПНЫЕ ТЕСТЫ";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // listTest
             // 
@@ -134,7 +115,7 @@ namespace AcademicCenter
             this.listTest.ItemHeight = 34;
             this.listTest.Location = new System.Drawing.Point(0, 26);
             this.listTest.Name = "listTest";
-            this.listTest.Size = new System.Drawing.Size(423, 202);
+            this.listTest.Size = new System.Drawing.Size(422, 202);
             this.listTest.TabIndex = 1;
             this.listTest.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listTest_DrawItem);
             // 
@@ -147,32 +128,50 @@ namespace AcademicCenter
             this.startTest.ForeColor = System.Drawing.SystemColors.GrayText;
             this.startTest.Location = new System.Drawing.Point(0, 228);
             this.startTest.Name = "startTest";
-            this.startTest.Size = new System.Drawing.Size(423, 42);
+            this.startTest.Size = new System.Drawing.Size(422, 42);
             this.startTest.TabIndex = 2;
             this.startTest.Text = "Приступить к выполнению теста";
             this.startTest.UseVisualStyleBackColor = false;
             this.startTest.Click += new System.EventHandler(this.startTest_Click);
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.DimGray;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(422, 26);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "ТЕСТЫ ПО ДИСЦИПЛИНЕ";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(2, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(32, 33);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "...";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormComplex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(821, 480);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pListTest);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormComplex";
             this.Text = "Обучающе-тестирующий комплекс по учебной дисциплине ";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.pListTest.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem комплексToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem материалыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem тестыToolStripMenuItem;
@@ -184,6 +183,7 @@ namespace AcademicCenter
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listTest;
         private System.Windows.Forms.Button startTest;
+        private System.Windows.Forms.Button button1;
     }
 }
 
