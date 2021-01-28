@@ -53,10 +53,10 @@ namespace AcademicCenter
                     e.ForeColor,
                     Color.Silver);
             e.DrawBackground();
-            e.Graphics.DrawString(Configuration.Disciplines[0].Title??"..", 
+            e.Graphics.DrawString(t.Title??"..", 
                 new Font(listTest.Font.FontFamily,13f, FontStyle.Bold), 
                 Brushes.Black, new Point(e.Bounds.X+10,e.Bounds.Y-2) );
-            e.Graphics.DrawString(Configuration.Disciplines[0].Descrition??"?", 
+            e.Graphics.DrawString(t.Descrition??"?", 
                 new Font(listTest.Font.FontFamily, 11f, FontStyle.Regular), Brushes.DimGray,
                 new RectangleF(e.Bounds.X+10,e.Bounds.Y+14, e.Bounds.Width-14, e.Bounds.Height), 
                 new StringFormat{LineAlignment = StringAlignment.Near, Alignment = StringAlignment.Near} );
@@ -87,7 +87,7 @@ namespace AcademicCenter
 
             for (var i = 0; i < t.Items.Count; i++)
             {
-                Test.Item item = t.Items[i];
+                Item item = t.Items[i];
                 res.Add($"{(i+1):00} Вопрос - {item.Question}");
                 if(!test.testings[i].ret.All(s=>s))
                     res[res.Count - 1] += $"ОШИБКА [===========]";

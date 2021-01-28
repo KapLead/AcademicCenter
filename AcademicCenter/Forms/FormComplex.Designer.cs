@@ -40,7 +40,6 @@ namespace AcademicCenter
             this.listTest = new System.Windows.Forms.ListBox();
             this.startTest = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.pListTest.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -146,22 +145,11 @@ namespace AcademicCenter
             this.label1.Text = "ТЕСТЫ ПО ДИСЦИПЛИНЕ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(2, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(32, 33);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // FormComplex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(821, 480);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.pListTest);
             this.Name = "FormComplex";
             this.Text = "Обучающе-тестирующий комплекс по учебной дисциплине ";
@@ -183,7 +171,6 @@ namespace AcademicCenter
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listTest;
         private System.Windows.Forms.Button startTest;
-        private System.Windows.Forms.Button button1;
     }
 }
 

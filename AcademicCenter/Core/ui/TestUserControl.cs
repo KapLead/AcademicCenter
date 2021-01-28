@@ -14,7 +14,7 @@ namespace AcademicCenter
         {
             test = t;
             InitializeComponent();
-            foreach (Test.Item item in test.Items)
+            foreach (Item item in test.Items)
                 testings.Add(new TestItem(item){Dock=DockStyle.Top});
             foreach (TestItem item in testings)
             {

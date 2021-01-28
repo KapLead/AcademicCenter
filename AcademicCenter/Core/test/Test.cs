@@ -2,43 +2,26 @@
 
 namespace AcademicCenter
 {
+
+    /// <summary> Виды тестов </summary>
+    public enum Type { Обучение, Контрольная }
+ 
+    /// <summary> Тест </summary>
     public class Test
     {
+        
+        /// <summary> заголовок дисциплины </summary>
+        public string Title { get; set; }
+
+        /// <summary> заголовок дисциплины </summary>
+        public string Descrition { get; set; }
+ 
+        /// <summary> Вид теста </summary>
+        public Type Type { get; set; }
+
         /// <summary> Вопросы теста </summary>
         public List<Item> Items { get; set; } = new List<Item>();
             
-        /// <summary> Вид теста </summary>
-        public Type type { get; set; }
-        
 
-
-  
-        
-        
-        public class Item
-        {
-            /// <summary> Вопрос </summary>
-            public string Question { get; set; }
-           
-            /// <summary> Ответы </summary>
-            public List<Answer> Answers { get; set; }
-
-        }
-
-        /// <summary> Виды тестов </summary>
-        public enum Type { Обучение, Контрольная }
-
-        /// <summary> Ответ </summary>
-        public class Answer
-        {
-            /// <summary> Текст ответа </summary>
-            public string Text { get; set; }
-            
-            /// <summary> Документ для ответа </summary>
-            public List<Document> Documents { get; set; }
-            
-            /// <summary> Является правильным ответом </summary>
-            public bool IsCorrect { get; set; }
-        }
     }
 }

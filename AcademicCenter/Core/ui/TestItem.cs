@@ -9,9 +9,9 @@ namespace AcademicCenter
     public partial class TestItem : UserControl
     {
         public event EventHandler Ok;
-        private Test.Item item;
+        private Item item;
         private int height = 0;
-        public TestItem(Test.Item itm)
+        public TestItem(Item itm)
         {
             item = itm;
             InitializeComponent();
@@ -19,7 +19,7 @@ namespace AcademicCenter
             height += lText.Height + Padding.Top;
             Collapse();
             if(item.Answers.Count>0)
-                foreach (Test.Answer answer in item.Answers)
+                foreach (Answer answer in item.Answers)
                 {
                     Controls.Add(new CheckBox
                     {
