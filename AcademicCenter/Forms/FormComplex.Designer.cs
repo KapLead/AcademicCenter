@@ -223,9 +223,9 @@ namespace AcademicCenter
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(154, 100);
+            this.panel1.Location = new System.Drawing.Point(160, 100);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(523, 255);
+            this.panel1.Size = new System.Drawing.Size(517, 255);
             this.panel1.TabIndex = 4;
             // 
             // FormComplex
