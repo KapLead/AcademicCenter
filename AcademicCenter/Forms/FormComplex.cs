@@ -137,5 +137,12 @@ namespace AcademicCenter
             if(backend) label2.SendToBack();
             else label2.BringToFront();
         }
+
+        private void toolExit_Click(object sender, EventArgs e) => Close();
+
+        private void тестыToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            pListTest.Visible = true;
+        }
     }
 }

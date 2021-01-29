@@ -42,7 +42,16 @@ namespace AcademicCenter
             this.startTest = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.комплексToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.тестыToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.материалыToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.помощьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pListTest.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // комплексToolStripMenuItem
@@ -150,26 +159,94 @@ namespace AcademicCenter
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Location = new System.Drawing.Point(0, 24);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(10);
-            this.label2.Size = new System.Drawing.Size(821, 480);
+            this.label2.Size = new System.Drawing.Size(821, 456);
             this.label2.TabIndex = 2;
             this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.комплексToolStripMenuItem1,
+            this.тестыToolStripMenuItem1,
+            this.материалыToolStripMenuItem1,
+            this.помощьToolStripMenuItem1});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(821, 24);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // комплексToolStripMenuItem1
+            // 
+            this.комплексToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolExit});
+            this.комплексToolStripMenuItem1.Name = "комплексToolStripMenuItem1";
+            this.комплексToolStripMenuItem1.Size = new System.Drawing.Size(74, 20);
+            this.комплексToolStripMenuItem1.Text = "Комплекс";
+            // 
+            // тестыToolStripMenuItem1
+            // 
+            this.тестыToolStripMenuItem1.Name = "тестыToolStripMenuItem1";
+            this.тестыToolStripMenuItem1.Size = new System.Drawing.Size(51, 20);
+            this.тестыToolStripMenuItem1.Text = "Тесты";
+            this.тестыToolStripMenuItem1.Click += new System.EventHandler(this.тестыToolStripMenuItem1_Click);
+            // 
+            // материалыToolStripMenuItem1
+            // 
+            this.материалыToolStripMenuItem1.Name = "материалыToolStripMenuItem1";
+            this.материалыToolStripMenuItem1.Size = new System.Drawing.Size(83, 20);
+            this.материалыToolStripMenuItem1.Text = "Материалы";
+            // 
+            // помощьToolStripMenuItem1
+            // 
+            this.помощьToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.оПрограммеToolStripMenuItem});
+            this.помощьToolStripMenuItem1.Name = "помощьToolStripMenuItem1";
+            this.помощьToolStripMenuItem1.Size = new System.Drawing.Size(68, 20);
+            this.помощьToolStripMenuItem1.Text = "Помощь";
+            // 
+            // оПрограммеToolStripMenuItem
+            // 
+            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.оПрограммеToolStripMenuItem.Text = "О Программе";
+            // 
+            // toolExit
+            // 
+            this.toolExit.Name = "toolExit";
+            this.toolExit.Size = new System.Drawing.Size(180, 22);
+            this.toolExit.Text = "Выход";
+            this.toolExit.Click += new System.EventHandler(this.toolExit_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(154, 100);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(523, 255);
+            this.panel1.TabIndex = 4;
             // 
             // FormComplex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(821, 480);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pListTest);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormComplex";
             this.Text = "Обучающе-тестирующий комплекс по учебной дисциплине ";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.pListTest.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -186,6 +263,14 @@ namespace AcademicCenter
         private System.Windows.Forms.ListBox listTest;
         private System.Windows.Forms.Button startTest;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem комплексToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolExit;
+        private System.Windows.Forms.ToolStripMenuItem тестыToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem материалыToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem помощьToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
