@@ -45,13 +45,25 @@ namespace AcademicCenter
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.комплексToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.тестыToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.материалыToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolDocs = new System.Windows.Forms.ToolStripMenuItem();
             this.помощьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelDocs = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.listTest2 = new System.Windows.Forms.ListBox();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panelDoc = new System.Windows.Forms.Panel();
             this.pListTest.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.panelDocs.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // комплексToolStripMenuItem
@@ -171,7 +183,7 @@ namespace AcademicCenter
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.комплексToolStripMenuItem1,
             this.тестыToolStripMenuItem1,
-            this.материалыToolStripMenuItem1,
+            this.toolDocs,
             this.помощьToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -194,11 +206,12 @@ namespace AcademicCenter
             this.тестыToolStripMenuItem1.Text = "Тесты";
             this.тестыToolStripMenuItem1.Click += new System.EventHandler(this.тестыToolStripMenuItem1_Click);
             // 
-            // материалыToolStripMenuItem1
+            // toolDocs
             // 
-            this.материалыToolStripMenuItem1.Name = "материалыToolStripMenuItem1";
-            this.материалыToolStripMenuItem1.Size = new System.Drawing.Size(83, 20);
-            this.материалыToolStripMenuItem1.Text = "Материалы";
+            this.toolDocs.Name = "toolDocs";
+            this.toolDocs.Size = new System.Drawing.Size(83, 20);
+            this.toolDocs.Text = "Материалы";
+            this.toolDocs.Click += new System.EventHandler(this.toolDocs_Click);
             // 
             // помощьToolStripMenuItem1
             // 
@@ -213,6 +226,7 @@ namespace AcademicCenter
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
             this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.оПрограммеToolStripMenuItem.Text = "О Программе";
+            this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
             // toolExit
             // 
@@ -221,19 +235,125 @@ namespace AcademicCenter
             this.toolExit.Text = "Выход";
             this.toolExit.Click += new System.EventHandler(this.toolExit_Click);
             // 
-            // panel1
+            // panelDocs
             // 
-            this.panel1.Location = new System.Drawing.Point(160, 100);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(517, 255);
-            this.panel1.TabIndex = 4;
+            this.panelDocs.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panelDocs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelDocs.Controls.Add(this.panel2);
+            this.panelDocs.Controls.Add(this.panel7);
+            this.panelDocs.Controls.Add(this.panel4);
+            this.panelDocs.Controls.Add(this.panel3);
+            this.panelDocs.Controls.Add(this.panel6);
+            this.panelDocs.Location = new System.Drawing.Point(100, 94);
+            this.panelDocs.Name = "panelDocs";
+            this.panelDocs.Size = new System.Drawing.Size(622, 296);
+            this.panelDocs.TabIndex = 4;
+            this.panelDocs.Visible = false;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.listTest2);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(383, 291);
+            this.panel2.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.Gray;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(0, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(383, 26);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "ТЕСТЫ ПО ДИСЦИПЛИНЕ";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Gray;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(3, 291);
+            this.panel3.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Gray;
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel4.Location = new System.Drawing.Point(617, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(3, 291);
+            this.panel4.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.Gray;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(1, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(230, 26);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "ДОКУМЕНТЫ М МАТЕРИАЛЫ ПО ТЕСТУ";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.Gray;
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel6.Location = new System.Drawing.Point(0, 291);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(620, 3);
+            this.panel6.TabIndex = 5;
+            // 
+            // listTest2
+            // 
+            this.listTest2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listTest2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listTest2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listTest2.FormattingEnabled = true;
+            this.listTest2.IntegralHeight = false;
+            this.listTest2.ItemHeight = 34;
+            this.listTest2.Location = new System.Drawing.Point(0, 26);
+            this.listTest2.Name = "listTest2";
+            this.listTest2.Size = new System.Drawing.Size(383, 265);
+            this.listTest2.TabIndex = 2;
+            this.listTest2.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listTest_DrawItem);
+            this.listTest2.SelectedIndexChanged += new System.EventHandler(this.listTest2_SelectedIndexChanged);
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel7.Controls.Add(this.panelDoc);
+            this.panel7.Controls.Add(this.label4);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel7.Location = new System.Drawing.Point(386, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
+            this.panel7.Size = new System.Drawing.Size(231, 291);
+            this.panel7.TabIndex = 7;
+            // 
+            // panelDoc
+            // 
+            this.panelDoc.AutoScroll = true;
+            this.panelDoc.BackColor = System.Drawing.SystemColors.Window;
+            this.panelDoc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDoc.Location = new System.Drawing.Point(1, 26);
+            this.panelDoc.Name = "panelDoc";
+            this.panelDoc.Size = new System.Drawing.Size(230, 265);
+            this.panelDoc.TabIndex = 5;
             // 
             // FormComplex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(821, 480);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelDocs);
             this.Controls.Add(this.pListTest);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.menuStrip1);
@@ -245,6 +365,9 @@ namespace AcademicCenter
             this.pListTest.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panelDocs.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,10 +390,19 @@ namespace AcademicCenter
         private System.Windows.Forms.ToolStripMenuItem комплексToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolExit;
         private System.Windows.Forms.ToolStripMenuItem тестыToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem материалыToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolDocs;
         private System.Windows.Forms.ToolStripMenuItem помощьToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelDocs;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.ListBox listTest2;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panelDoc;
     }
 }
 

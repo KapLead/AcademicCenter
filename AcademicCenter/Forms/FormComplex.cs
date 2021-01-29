@@ -35,14 +35,14 @@ namespace AcademicCenter
                     return;
             }
             listTest.Items.Clear();
+            listTest2.Items.Clear();
             listTest.Items.AddRange(Configuration.Disciplines[0].Tests.ToArray());
+            listTest2.Items.AddRange(Configuration.Disciplines[0].Tests.ToArray());
             pListTest.Visible = true;
             Application.DoEvents();
             new FormStudent().ShowDialog();
-            if (string.IsNullOrWhiteSpace(FormStudent.UserFamile) ||
-                string.IsNullOrWhiteSpace(FormStudent.UserFamile) ||
-                string.IsNullOrWhiteSpace(FormStudent.UserFamile) ||
-                string.IsNullOrWhiteSpace(FormStudent.UserFamile))
+            if (string.IsNullOrWhiteSpace(FormStudent.UserFamile) || string.IsNullOrWhiteSpace(FormStudent.UserFamile) ||
+                string.IsNullOrWhiteSpace(FormStudent.UserFamile) || string.IsNullOrWhiteSpace(FormStudent.UserFamile))
             {
                 MessageBox.Show(@"Введены не полные данные. Тестирование не возможно", @"Завершение работы");
                 Close();
@@ -50,6 +50,11 @@ namespace AcademicCenter
 
             label2.Text = $"Тестируемый : студент группы(класса) '{FormStudent.UserGroup}'\r\n" +
                           $"\t{FormStudent.UserFamile} {FormStudent.UserName} {FormStudent.UserOtchestvo}\r\n";
+
+            if (listTest.Items.Count > 0)
+            {
+                listTest.SelectedIndex = listTest2.SelectedIndex = 0;
+            }
         }
 
         private void listTest_DrawItem(object sender, DrawItemEventArgs e)
@@ -143,6 +148,86 @@ namespace AcademicCenter
         private void тестыToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             pListTest.Visible = true;
+            panelDocs.Visible = false;
+        }
+
+        private void toolDocs_Click(object sender, EventArgs e)
+        {
+            pListTest.Visible =false;
+            panelDocs.Visible =true;
+        }
+
+        private void listTest2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listTest2.SelectedIndex < 0) return;
+            Test t = (Test)listTest2.Items[listTest2.SelectedIndex];
+            if (t == null) return;
+            panelDoc.Controls.Clear();
+            int i = 1;
+            foreach (Item item in t.Items)
+            {
+                Label title = new Label 
+                { 
+                    Text =$@"{i++} {item.Question}", 
+                    AutoEllipsis = true,
+                    AutoSize = false,
+                    Dock = DockStyle.Top
+                };
+                panelDoc.Controls.Add(title);
+                title.BringToFront();
+                List<Document> doc = new List<Document>();
+                foreach (Answer answer in item.Answers)
+                {
+                    foreach (Document document in answer.Documents)
+                    {
+                        if (doc.All(d => d.Name != document.Name))
+                            doc.Add(document);
+                    }
+                }
+                if(doc.Count==0) 
+                {
+                    panelDoc.Controls.Add(new Label
+                    {
+                        Text = @"без документов",
+                        ForeColor = Color.DimGray, 
+                        AutoSize = false,
+                        TextAlign = ContentAlignment.MiddleCenter
+                    });
+                    panelDoc.Controls[panelDoc.Controls.Count - 1].BringToFront();
+                }
+                else
+                {
+                    foreach (Document d in doc)
+                    {
+                        var b = new Button
+                        {
+                            Tag = d.Path,
+                            Text = d.Name,
+                            AutoSize = false,
+                            Dock = DockStyle.Top,
+                            ForeColor = Color.DimGray,
+                            FlatStyle = FlatStyle.Flat,
+                            TextAlign = ContentAlignment.MiddleLeft,
+                            Padding = new Padding(10, 0, 0, 0),
+                            FlatAppearance =
+                            {
+                                BorderSize = 0
+                            }
+                        };
+                        panelDoc.Controls.Add(b);
+                        b.BringToFront();
+                        b.Click += (o, args) =>
+                        {
+                            Process.Start(((Button)o)?.Tag.ToString());
+                        };
+                    }
+                }
+            }
+        }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FormAbout().ShowDialog();
         }
     }
 }
