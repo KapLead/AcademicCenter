@@ -44,21 +44,21 @@ namespace AcademicCenter
             this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.комплексToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolExit = new System.Windows.Forms.ToolStripMenuItem();
             this.тестыToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolDocs = new System.Windows.Forms.ToolStripMenuItem();
             this.помощьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolExit = new System.Windows.Forms.ToolStripMenuItem();
             this.panelDocs = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.listTest2 = new System.Windows.Forms.ListBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panelDoc = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.pListTest.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panelDocs.SuspendLayout();
@@ -180,11 +180,6 @@ namespace AcademicCenter
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.комплексToolStripMenuItem1,
-            this.тестыToolStripMenuItem1,
-            this.toolDocs,
-            this.помощьToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(821, 24);
@@ -198,6 +193,13 @@ namespace AcademicCenter
             this.комплексToolStripMenuItem1.Name = "комплексToolStripMenuItem1";
             this.комплексToolStripMenuItem1.Size = new System.Drawing.Size(74, 20);
             this.комплексToolStripMenuItem1.Text = "Комплекс";
+            // 
+            // toolExit
+            // 
+            this.toolExit.Name = "toolExit";
+            this.toolExit.Size = new System.Drawing.Size(109, 22);
+            this.toolExit.Text = "Выход";
+            this.toolExit.Click += new System.EventHandler(this.toolExit_Click);
             // 
             // тестыToolStripMenuItem1
             // 
@@ -224,16 +226,9 @@ namespace AcademicCenter
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.оПрограммеToolStripMenuItem.Text = "О Программе";
             this.оПрограммеToolStripMenuItem.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
-            // 
-            // toolExit
-            // 
-            this.toolExit.Name = "toolExit";
-            this.toolExit.Size = new System.Drawing.Size(180, 22);
-            this.toolExit.Text = "Выход";
-            this.toolExit.Click += new System.EventHandler(this.toolExit_Click);
             // 
             // panelDocs
             // 
@@ -260,57 +255,6 @@ namespace AcademicCenter
             this.panel2.Size = new System.Drawing.Size(383, 291);
             this.panel2.TabIndex = 0;
             // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.Color.Gray;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(0, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(383, 26);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "ТЕСТЫ ПО ДИСЦИПЛИНЕ";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Gray;
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(3, 291);
-            this.panel3.TabIndex = 1;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.Gray;
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(617, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(3, 291);
-            this.panel4.TabIndex = 2;
-            // 
-            // label4
-            // 
-            this.label4.BackColor = System.Drawing.Color.Gray;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(1, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(230, 26);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "ДОКУМЕНТЫ М МАТЕРИАЛЫ ПО ТЕСТУ";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.Gray;
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 291);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(620, 3);
-            this.panel6.TabIndex = 5;
-            // 
             // listTest2
             // 
             this.listTest2.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -325,6 +269,18 @@ namespace AcademicCenter
             this.listTest2.TabIndex = 2;
             this.listTest2.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listTest_DrawItem);
             this.listTest2.SelectedIndexChanged += new System.EventHandler(this.listTest2_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.Gray;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(0, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(383, 26);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "ТЕСТЫ ПО ДИСЦИПЛИНЕ";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel7
             // 
@@ -347,6 +303,45 @@ namespace AcademicCenter
             this.panelDoc.Name = "panelDoc";
             this.panelDoc.Size = new System.Drawing.Size(230, 265);
             this.panelDoc.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.Gray;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(1, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(230, 26);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "ДОКУМЕНТЫ И МАТЕРИАЛЫ ПО ТЕСТУ";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Gray;
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel4.Location = new System.Drawing.Point(617, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(3, 291);
+            this.panel4.TabIndex = 2;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Gray;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(3, 291);
+            this.panel3.TabIndex = 1;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.Gray;
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel6.Location = new System.Drawing.Point(0, 291);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(620, 3);
+            this.panel6.TabIndex = 5;
             // 
             // FormComplex
             // 

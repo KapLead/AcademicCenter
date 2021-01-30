@@ -12,32 +12,29 @@ namespace AcademicCenter
 {
     public partial class FormComplex : Form
     {
+        private TestUserControl _test;
+        private bool _backend = true;
+        
         public FormComplex()
         {
             InitializeComponent();
-            this.Text +="\""+Settings.Default.Discipline+ "\"";
+            Text +=@""""+Settings.Default.Discipline+ @"""";
         }
-
-        private void Form1_Load(object sender, EventArgs e) => Menu();
+        public sealed override string Text
+        {
+            get => base.Text;
+            set => base.Text = value;
+        }
+        private void Form1_Load(object sender, EventArgs e) => ConfigMenu();
         private void exit_Click(object sender, EventArgs e) => Close();
         private void settings_Click(object sender, EventArgs e) => new FormSettings().ShowDialog();
-
-        private void Menu()
+        private void ConfigMenu()
         {
-            if(Configuration.Disciplines.Count==0)
-            {
-                //if (MessageBox.Show(
-                //        @"Нет доступных дисциплин и тестов к ним, создать по умолчанию?",
-                //        @"Внимание...",
-                //        MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes) 
-                Configuration.Disciplines = Configuration.GetDisciplines();
-                if (Configuration.Disciplines.Count == 0)
-                    return;
-            }
+            if(Configuration.Disciplines.Count==0) return;
             listTest.Items.Clear();
             listTest2.Items.Clear();
-            listTest.Items.AddRange(Configuration.Disciplines[0].Tests.ToArray());
-            listTest2.Items.AddRange(Configuration.Disciplines[0].Tests.ToArray());
+            listTest.Items.AddRange(Configuration.Disciplines[0]?.Tests?.ToArray());
+            listTest2.Items.AddRange(Configuration.Disciplines[0]?.Tests?.ToArray());
             pListTest.Visible = true;
             Application.DoEvents();
             new FormStudent().ShowDialog();
@@ -48,15 +45,16 @@ namespace AcademicCenter
                 Close();
             }
 
-            label2.Text = $"Тестируемый : студент группы(класса) '{FormStudent.UserGroup}'\r\n" +
-                          $"\t{FormStudent.UserFamile} {FormStudent.UserName} {FormStudent.UserOtchestvo}\r\n";
+            label2.Text = $@"Тестируемый : студент группы(класса) '{FormStudent.UserGroup}'
+" +
+                          $@"	{FormStudent.UserFamile} {FormStudent.UserName} {FormStudent.UserOtchestvo}
+";
 
             if (listTest.Items.Count > 0)
             {
                 listTest.SelectedIndex = listTest2.SelectedIndex = 0;
             }
         }
-
         private void listTest_DrawItem(object sender, DrawItemEventArgs e)
         {
             if(e.Index<0) return;
@@ -82,29 +80,26 @@ namespace AcademicCenter
                 new Font(listTest.Font.FontFamily, 13f, FontStyle.Regular),
                 t.Type==0?Brushes.RoyalBlue:Brushes.Green, new Point(e.Bounds.Right-150,e.Bounds.Y+5));
         }
-
-        private TestUserControl test = null;
         private void startTest_Click(object sender, EventArgs e)
         {
             if (listTest.SelectedIndex < 0) return;
             Test t = (Test) listTest.Items[listTest.SelectedIndex];
             if (t == null) return;
-            if (test != null) Controls.Remove(test);
-            test?.Dispose();
-            test = new TestUserControl(t);
+            if (_test != null) Controls.Remove(_test);
+            _test?.Dispose();
+            _test = new TestUserControl(t);
             pListTest.Visible = false;
-            Controls.Add(test);
-            test.BringToFront();
-            test.Dock = DockStyle.Fill;
-            test.Finish+= TestOnFinish;
+            Controls.Add(_test);
+            _test.BringToFront();
+            _test.Dock = DockStyle.Fill;
+            _test.Finish+= TestOnFinish;
         }
-
         private void TestOnFinish(object sender, EventArgs e)
         {
             Test t = (Test)listTest.Items[listTest.SelectedIndex];
             if (t == null)
             {
-                test.Visible = false;
+                _test.Visible = false;
                 return;
             }
             List<string> res = new List<string>();
@@ -113,7 +108,7 @@ namespace AcademicCenter
             {
                 Item item = t.Items[i];
                 res.Add($"{i+1} Вопрос - {item.Question}");
-                if(!test.testings[i].ret.All(s=>s))
+                if(!_test.testings[i].ret.All(s=>s))
                     res[res.Count - 1] += $"\t ОШИБКА [===========]";
                 else
                 {
@@ -124,39 +119,36 @@ namespace AcademicCenter
             File.WriteAllLines(file=$"result{DateTime.Now:yyyyMMdd-hhmmss}.txt",res,Encoding.UTF8);
             foreach (string s in res) label2.Text += s + Environment.NewLine;
             Process p = Process.Start(file);
-            p.EnableRaisingEvents = true;
-            p.Exited += (o, args) =>
+            if (p != null)
             {
-                test.Invoke(new Action((() =>
+                p.EnableRaisingEvents = true;
+                p.Exited += (o, args) =>
                 {
-                    test.Visible = false;
-                    pListTest.Visible = true;
-                })));
-            };
+                    _test.Invoke(new Action((() =>
+                    {
+                        _test.Visible = false;
+                        pListTest.Visible = true;
+                    })));
+                };
+            }
         }
-
-        private bool backend = true;
         private void label2_Click(object sender, EventArgs e)
         {
-            backend = !backend;
-            if(backend) label2.SendToBack();
+            _backend = !_backend;
+            if(_backend) label2.SendToBack();
             else label2.BringToFront();
         }
-
         private void toolExit_Click(object sender, EventArgs e) => Close();
-
         private void тестыToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             pListTest.Visible = true;
             panelDocs.Visible = false;
         }
-
         private void toolDocs_Click(object sender, EventArgs e)
         {
             pListTest.Visible =false;
             panelDocs.Visible =true;
         }
-
         private void listTest2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listTest2.SelectedIndex < 0) return;
@@ -218,16 +210,13 @@ namespace AcademicCenter
                         b.BringToFront();
                         b.Click += (o, args) =>
                         {
-                            Process.Start(((Button)o)?.Tag.ToString());
+                            var tag = ((Button) o)?.Tag;
+                            if (tag != null) Process.Start(tag.ToString());
                         };
                     }
                 }
             }
         }
-
-        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new FormAbout().ShowDialog();
-        }
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e) => new FormAbout().ShowDialog();
     }
 }
