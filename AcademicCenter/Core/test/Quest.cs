@@ -9,7 +9,7 @@ namespace AcademicCenter
         public string Question { get; set; } = "";
 
         /// <summary> Ответы </summary>
-        public List<Answer> Answers { get; set; } = new List<Answer>();
+        public List<Answer> Answers { get; set; }
 
     }
 }

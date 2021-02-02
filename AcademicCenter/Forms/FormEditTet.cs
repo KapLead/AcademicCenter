@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
@@ -45,6 +46,11 @@ namespace AcademicCenter
 
         private void FormEditTet_Load(object sender, EventArgs e)
         {
+            Update();
+        }
+
+        private void Update()
+        {
             d = Configuration.Disciplines?[0];
             listTest.Items.AddRange(d.Tests.ToArray());
             if (listTest.Items.Count > 0)
@@ -53,31 +59,6 @@ namespace AcademicCenter
 
         #region listQuestion
 
-        private void listAnswer_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            if (e.Index < 0) return;
-            Quest t = d.Tests[listTest.SelectedIndex].Items[e.Index];
-            if (t == null) return;
-            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
-                e = new DrawItemEventArgs(e.Graphics, e.Font, e.Bounds, e.Index,
-                    e.State ^ DrawItemState.Selected, e.ForeColor, Color.Silver);
-            e.DrawBackground();
-            e.Graphics.DrawString(t.Question, DefaultFont, Brushes.Black, e.Bounds.X + 10, e.Bounds.Y + 9);
-        }
-        private void listAnswer_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listQuestion.SelectedIndex < 0) return;
-            Quest q = null;
-            if (listQuestion.Items[listQuestion.SelectedIndex] is Quest)
-                q = (Quest)listQuestion.Items[listQuestion.SelectedIndex];
-            listAnswer.Items.Clear();
-            if (q == null) return;
-            textBox4.Text = q.Question;
-            listAnswer.Items.AddRange(q?.Answers?.ToArray());
-            if (listAnswer.Items.Count > 0)
-                listAnswer.SelectedIndex = 0;
-            listAnswer.Refresh();
-        }
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
              if (listQuestion.SelectedIndex < 0) return;
@@ -135,27 +116,7 @@ namespace AcademicCenter
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            var t = new Test
-            {
-                Type = Type.Контрольная,
-                Items = new List<Quest>
-                {
-                    new Quest
-                    {
-                        Answers = new List<Answer>
-                        {
-                            new Answer
-                            {
-                                Documents = new List<Document>(),
-                                Text = "",
-                                IsCorrect = false
-                            }
-                        }
-                    }
-                },
-                Title = "Новый тест",
-                Descrition = "Описание нового теста"
-            };
+            var t = new Test();
             d.Tests.Add(t);
             listTest.Items.Add(t);
             listTest.SelectedIndex = listQuestion.Items.Count - 1;
@@ -203,36 +164,30 @@ namespace AcademicCenter
 
         #endregion
 
-        private void listAnswer_DrawItem_1(object sender, DrawItemEventArgs e)
-        {
-            if (e.Index < 0) return;
-            Answer t = d.Tests[listTest.SelectedIndex].Items[listQuestion.SelectedIndex].Answers[listAnswer.SelectedIndex];
-            if (t == null) return;
-            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
-                e = new DrawItemEventArgs(e.Graphics, e.Font, e.Bounds, e.Index,
-                    e.State ^ DrawItemState.Selected, e.ForeColor, Color.Silver);
-            e.DrawBackground();
-            CheckBoxRenderer.DrawCheckBox
-            (   e.Graphics,
-                new Point(e.Bounds.X+15,e.Bounds.Y+8),
-                t.IsCorrect?CheckBoxState.CheckedNormal:CheckBoxState.UncheckedNormal);
-            e.Graphics.DrawString(t.Text, DefaultFont, Brushes.Black, e.Bounds.X + 40, e.Bounds.Y + 9);
-        }
-
         private void listAnswer_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (listAnswer.SelectedIndex < 0) return;
             Answer a = (Answer)listAnswer.Items[listAnswer.SelectedIndex];
             if (a == null) return;
+            textBox3.TextChanged -= textBox3_TextChanged;
+            dataGridView1.CurrentCellChanged -= dataGridView1_CurrentCellChanged;
             textBox3.Text = a.Text;
             checkBox1.Checked = a.IsCorrect;
-            dataGridView1.CurrentCellChanged -= dataGridView1_CurrentCellChanged;
-            dataGridView1.Rows.Clear();
+            try
+            {
+                dataGridView1.Rows.Clear();
+            }
+            catch { }
             foreach (Document d in a.Documents)
             {
-                dataGridView1.Rows.Add(d.Name, d.Path);
+                try
+                {
+                    dataGridView1.Rows.Add(d.Name, d.Path);
+                }
+                catch { }
             }
             dataGridView1.CurrentCellChanged += dataGridView1_CurrentCellChanged;
+            textBox3.TextChanged += textBox3_TextChanged;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -257,27 +212,6 @@ namespace AcademicCenter
 
         private void dataGridView1_CurrentCellChanged(object sender, EventArgs e)
         {
-            if (listAnswer.SelectedIndex < 0) return;
-            Answer a = (Answer)listAnswer.Items[listAnswer.SelectedIndex];
-            if (a == null) return;
-            a.Documents = new List<Document>();
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                a.Documents.Add(new Document
-                {
-                    Name = row.Cells[0].Value.ToString(),
-                    Path = row.Cells[1].Value.ToString()
-                });
-            }
-            Quest q = (Quest)listQuestion.Items[listQuestion.SelectedIndex];
-            if (q == null) return;
-            q.Answers[listAnswer.SelectedIndex].Documents = a.Documents;
-            q.Answers[listAnswer.SelectedIndex].Text = a.Text;
-            listQuestion.Items[listQuestion.SelectedIndex] = q;
-            Test t = (Test)listTest.Items[listTest.SelectedIndex];
-            if (t == null) return;
-            t.Items[listTest.SelectedIndex].Question = q.Question;
-            t.Items[listTest.SelectedIndex].Answers = q.Answers;
         }
 
         private void save_Click(object sender, EventArgs e)
@@ -291,5 +225,130 @@ namespace AcademicCenter
             }
             d.Save(Application.StartupPath + @"\dat\discipline\default.json");
         }
+
+        private void listQuestion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listQuestion.SelectedIndex < 0) return;
+            Quest q = d.Tests[listTest.SelectedIndex].Items[listQuestion.SelectedIndex];
+            listAnswer.Items.Clear();
+            if (q == null) return;
+            textBox4.Text = q.Question;
+            if(q.Answers.Count>0)
+            {
+                listAnswer.Items.Clear();
+                listAnswer.Items.AddRange(q.Answers.ToArray());
+                listAnswer.SelectedIndex = 0;
+                listAnswer.Refresh();
+            }
+
+        }
+
+        private void answerDel_Click(object sender, EventArgs e)
+        {
+            if (listAnswer.SelectedIndex < 0) return;
+            d.Tests[listTest.SelectedIndex].Items[listQuestion.SelectedIndex].Answers.RemoveAt(listAnswer.SelectedIndex);
+            listAnswer.Items.RemoveAt(listAnswer.SelectedIndex);
+        }
+
+        private void answerAdd_Click(object sender, EventArgs e)
+        {
+            d.Tests[listTest.SelectedIndex].Items[listQuestion.SelectedIndex].Answers.Add(new Answer());
+            listAnswer.Items.Add(d.Tests[listTest.SelectedIndex].Items[listQuestion.SelectedIndex].Answers.Last());
+            listAnswer.SelectedIndex = listAnswer.Items.Count - 1;
+        }
+
+        private void listQuestion_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0) return;
+            Quest t = d.Tests[listTest.SelectedIndex]
+                .Items[e.Index< d.Tests[listTest.SelectedIndex].Items.Count?e.Index: d.Tests[listTest.SelectedIndex].Items.Count-1];
+            if (t == null) return;
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+                e = new DrawItemEventArgs(e.Graphics, e.Font, e.Bounds, e.Index,
+                    e.State ^ DrawItemState.Selected, e.ForeColor, Color.Silver);
+            e.DrawBackground();
+            e.Graphics.DrawString(t.Question, DefaultFont, Brushes.Black, e.Bounds.X + 10, e.Bounds.Y + 9);
+        }
+
+        private void listAnswer_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0) return;
+            Answer t = d.Tests[listTest.SelectedIndex].Items[listQuestion.SelectedIndex].Answers[e.Index];
+            if (t == null) return;
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+                e = new DrawItemEventArgs(e.Graphics, e.Font, e.Bounds, e.Index,
+                    e.State ^ DrawItemState.Selected, e.ForeColor, Color.Silver);
+            e.DrawBackground();
+            CheckBoxRenderer.DrawCheckBox(e.Graphics,
+                new Point(e.Bounds.X + 15, e.Bounds.Y + 8),
+                t.IsCorrect ? CheckBoxState.CheckedNormal : CheckBoxState.UncheckedNormal);
+            e.Graphics.DrawString(t.Text, DefaultFont, Brushes.Black, e.Bounds.X + 40, e.Bounds.Y + 9);
+        }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (listAnswer.SelectedIndex < 0) return;
+            Answer a = (Answer)listAnswer.Items[listAnswer.SelectedIndex];
+            if (a == null) return;
+            a.Documents = new List<Document>();
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                a.Documents.Add(new Document
+                {
+                    Name = row.Cells[0].Value?.ToString() ?? "",
+                    Path = row.Cells[1].Value?.ToString() ?? ""
+                });
+            }
+            Quest q = (Quest)listQuestion.Items[listQuestion.SelectedIndex];
+            if (q == null) return;
+            q.Answers[listAnswer.SelectedIndex].Documents = a.Documents;
+            q.Answers[listAnswer.SelectedIndex].Text = a.Text;
+            listQuestion.Items[listQuestion.SelectedIndex] = q;
+            Test t = (Test)listTest.Items[listTest.SelectedIndex];
+            if (t == null) return;
+            t.Items[listTest.SelectedIndex].Question = q.Question;
+            t.Items[listTest.SelectedIndex].Answers = q.Answers;
+        }
+
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (button5.Visible=(e.ColumnIndex == 1))
+            {
+                button5.Left = dataGridView1.Right - button5.Width - (dataGridView1.Controls.OfType<VScrollBar>().First()?.Visible??false ? 16 : 0);
+                button5.Top = dataGridView1.ColumnHeadersHeight+ dataGridView1.Top+e.RowIndex*dataGridView1.RowTemplate.Height;
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            dataGridView1.CellValueChanged -= dataGridView1_CellValueChanged;
+            if (File.Exists(dataGridView1.SelectedCells[0].Value.ToString()))
+            {
+                openFileDialog1.InitialDirectory =
+                    Path.GetDirectoryName(dataGridView1.SelectedCells[0].Value.ToString());
+            }
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                dataGridView1.SelectedCells[0].Value = openFileDialog1.FileName;
+            }
+            Application.DoEvents();
+            Answer a = (Answer)listAnswer.Items[listAnswer.SelectedIndex];
+            a.Documents.Clear();
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                a.Documents.Add(new Document
+                {
+                    Name = row.Cells[0].Value?.ToString() ?? "",
+                    Path = row.Cells[1].Value?.ToString() ?? ""
+                });
+            }
+
+            d.Tests[listTest.SelectedIndex].Items[listQuestion.SelectedIndex].Answers[listAnswer.SelectedIndex] = a;
+            listAnswer.Items[listAnswer.SelectedIndex] = d.Tests[listTest.SelectedIndex]
+                .Items[listQuestion.SelectedIndex].Answers[listAnswer.SelectedIndex];
+            dataGridView1.CellValueChanged -= dataGridView1_CellValueChanged;
+                 
+            button5.Left = dataGridView1.Right - button5.Width - (dataGridView1.Controls.OfType<VScrollBar>().First()?.Visible ?? false ? 16 : 0);
+       }
     }
 }

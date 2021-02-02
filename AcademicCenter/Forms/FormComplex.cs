@@ -221,7 +221,8 @@ namespace AcademicCenter
 
         private void редакторТестовToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new FormEditTet().ShowDialog();
+            new FormEditTet().ShowDialog(); 
+            ConfigMenu();
         }
     }
 }

@@ -20,19 +20,7 @@ namespace AcademicCenter
         public Type Type { get; set; } = Type.Обучение;
 
         /// <summary> Вопросы теста </summary>
-        public List<Quest> Items { get; set; } = new List<Quest>
-        {
-            new Quest
-            {
-                Answers = new List<Answer>
-                {
-                    new Answer
-                    {
-                        Documents = new List<Document>()
-                    }
-                }
-            }
-        };
+        public List<Quest> Items { get; set; } = new List<Quest>();
             
 
     }
