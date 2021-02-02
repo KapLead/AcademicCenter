@@ -58,7 +58,7 @@
     <Compile Include="Core\doc\Document.cs" />
     <Compile Include="Core\JsonSettings.cs" />
     <Compile Include="Core\test\Answer.cs" />
-    <Compile Include="Core\test\Item.cs" />
+    <Compile Include="Core\test\Quest.cs" />
     <Compile Include="Core\test\Test.cs" />
     <Compile Include="Core\ui\TestItem.cs">
       <SubType>UserControl</SubType>
@@ -72,10 +72,16 @@
     <Compile Include="Core\ui\TestUserControl.Designer.cs">
       <DependentUpon>TestUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAbout.cs">
+    <Compile Include="FormEditTet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAbout.Designer.cs">
+    <Compile Include="FormEditTet.Designer.cs">
+      <DependentUpon>FormEditTet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAbout.Designer.cs">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormStudent.cs">
@@ -104,7 +110,10 @@
     <EmbeddedResource Include="Core\ui\TestUserControl.resx">
       <DependentUpon>TestUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAbout.resx">
+    <EmbeddedResource Include="FormEditTet.resx">
+      <DependentUpon>FormEditTet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormStudent.resx">
@@ -124,6 +133,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -140,6 +150,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\update.png" />
     <Content Include="добавить_переход_к_папке_Output_где_все_папки.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -43,6 +43,12 @@ namespace AcademicCenter
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.комплексToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.тестыToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.документыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.помощьToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.оПрограммеToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.комплексToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolExit = new System.Windows.Forms.ToolStripMenuItem();
             this.тестыToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,6 +65,8 @@ namespace AcademicCenter
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.редакторТестовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.pListTest.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panelDocs.SuspendLayout();
@@ -170,7 +178,9 @@ namespace AcademicCenter
             // 
             // label2
             // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.Location = new System.Drawing.Point(0, 24);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(10);
@@ -180,11 +190,62 @@ namespace AcademicCenter
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.комплексToolStripMenuItem2,
+            this.тестыToolStripMenuItem2,
+            this.документыToolStripMenuItem,
+            this.помощьToolStripMenuItem2});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(821, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // комплексToolStripMenuItem2
+            // 
+            this.комплексToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.редакторТестовToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.выходToolStripMenuItem});
+            this.комплексToolStripMenuItem2.Name = "комплексToolStripMenuItem2";
+            this.комплексToolStripMenuItem2.Size = new System.Drawing.Size(74, 20);
+            this.комплексToolStripMenuItem2.Text = "Комплекс";
+            // 
+            // выходToolStripMenuItem
+            // 
+            this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.выходToolStripMenuItem.Text = "Выход";
+            this.выходToolStripMenuItem.Click += new System.EventHandler(this.exit_Click);
+            // 
+            // тестыToolStripMenuItem2
+            // 
+            this.тестыToolStripMenuItem2.Name = "тестыToolStripMenuItem2";
+            this.тестыToolStripMenuItem2.Size = new System.Drawing.Size(51, 20);
+            this.тестыToolStripMenuItem2.Text = "Тесты";
+            this.тестыToolStripMenuItem2.Click += new System.EventHandler(this.тестыToolStripMenuItem1_Click);
+            // 
+            // документыToolStripMenuItem
+            // 
+            this.документыToolStripMenuItem.Name = "документыToolStripMenuItem";
+            this.документыToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
+            this.документыToolStripMenuItem.Text = "Документы";
+            this.документыToolStripMenuItem.Click += new System.EventHandler(this.toolDocs_Click);
+            // 
+            // помощьToolStripMenuItem2
+            // 
+            this.помощьToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.оПрограммеToolStripMenuItem1});
+            this.помощьToolStripMenuItem2.Name = "помощьToolStripMenuItem2";
+            this.помощьToolStripMenuItem2.Size = new System.Drawing.Size(68, 20);
+            this.помощьToolStripMenuItem2.Text = "Помощь";
+            // 
+            // оПрограммеToolStripMenuItem1
+            // 
+            this.оПрограммеToolStripMenuItem1.Name = "оПрограммеToolStripMenuItem1";
+            this.оПрограммеToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.оПрограммеToolStripMenuItem1.Text = "О Программе";
+            this.оПрограммеToolStripMenuItem1.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
             // комплексToolStripMenuItem1
             // 
@@ -343,6 +404,18 @@ namespace AcademicCenter
             this.panel6.Size = new System.Drawing.Size(620, 3);
             this.panel6.TabIndex = 5;
             // 
+            // редакторТестовToolStripMenuItem
+            // 
+            this.редакторТестовToolStripMenuItem.Name = "редакторТестовToolStripMenuItem";
+            this.редакторТестовToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.редакторТестовToolStripMenuItem.Text = "Редактор тестов";
+            this.редакторТестовToolStripMenuItem.Click += new System.EventHandler(this.редакторТестовToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            // 
             // FormComplex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,8 +423,8 @@ namespace AcademicCenter
             this.ClientSize = new System.Drawing.Size(821, 480);
             this.Controls.Add(this.panelDocs);
             this.Controls.Add(this.pListTest);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.label2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormComplex";
@@ -398,6 +471,14 @@ namespace AcademicCenter
         private System.Windows.Forms.ListBox listTest2;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panelDoc;
+        private System.Windows.Forms.ToolStripMenuItem комплексToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem тестыToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem документыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem помощьToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem редакторТестовToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
     }
 }
 

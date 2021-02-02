@@ -10,9 +10,9 @@ namespace AcademicCenter
     public partial class TestItem : UserControl
     {
         public event EventHandler Ok;
-        private Item item;
+        private Quest item;
         private int height = 0;
-        public TestItem(Item itm)
+        public TestItem(Quest itm)
         {
             item = itm;
             InitializeComponent();
@@ -96,18 +96,27 @@ namespace AcademicCenter
         private void ok_Click(object sender, System.EventArgs e)
         {
             ret.Clear();
+            List<string> _ret = new List<string>();
             foreach (CheckBox box in GetAnswers())
             {
                 var itm = item.Answers.FirstOrDefault(a => a.Text == box.Text);
                 if(itm==null) ret.Add(false);
                 else
+                {
                     ret.Add(box.Checked==itm.IsCorrect);
+                    if(itm.IsCorrect && !box.Checked)
+                        _ret.Add(itm.Text);
+                }
             }
             BackColor = (!ret.All(b => b)) ? Color.IndianRed : Color.LightGreen;
             var disc = Configuration.Disciplines[0].Tests.FirstOrDefault(t => t.Items.Contains(item));
             if (disc?.Type == Type.Обучение && !ret.All(b => b))
             {
-                MessageBox.Show(@"Ответ не верный. Изучите материал по данной теме, и укажите правильный вариант ответа",
+                string rt = string.Empty;
+                foreach (string s in _ret)
+                    rt +=(rt==string.Empty?"":" и ")+ s;
+                
+                MessageBox.Show($"Ответ не верный. Изучите материал по данной теме.\r\n\r\nПравильны{(_ret.Count>1?"e":"й")} ответ{(_ret.Count > 1 ? "ы" : "")} : {rt}",
                     @"Не верный ответ");
                 return;
             }

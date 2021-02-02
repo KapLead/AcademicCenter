@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace AcademicCenter
@@ -13,26 +12,26 @@ namespace AcademicCenter
 
         private void FormSettings_Load(object sender, EventArgs e)
         {
-            Exp_books.ItemCheck -= checkedChange;
-            Exp_discourse.ItemCheck -= checkedChange;
-            Exp_laboratory.ItemCheck -= checkedChange;
-            Exp_presentations.ItemCheck -= checkedChange;
-            Exp_videos.ItemCheck -= checkedChange;
-            foreach (KeyValuePair<string, bool> pair in Configuration.books?.Items)
-                Exp_books.Items.Add(pair.Key, pair.Value);
-            foreach (KeyValuePair<string, bool> pair in Configuration.discourse?.Items)
-                Exp_discourse.Items.Add(pair.Key, pair.Value);
-            foreach (KeyValuePair<string, bool> pair in Configuration.laboratory?.Items)
-                Exp_laboratory.Items.Add(pair.Key, pair.Value);
-            foreach (KeyValuePair<string, bool> pair in Configuration.presentations?.Items)
-                Exp_presentations.Items.Add(pair.Key, pair.Value);
-            foreach (KeyValuePair<string, bool> pair in Configuration.videos?.Items)
-                Exp_videos.Items.Add(pair.Key, pair.Value);
-            Exp_books.ItemCheck += checkedChange;
-            Exp_discourse.ItemCheck += checkedChange;
-            Exp_laboratory.ItemCheck += checkedChange;
-            Exp_presentations.ItemCheck += checkedChange;
-            Exp_videos.ItemCheck += checkedChange;
+            //Exp_books.ItemCheck -= checkedChange;
+            //Exp_discourse.ItemCheck -= checkedChange;
+            //Exp_laboratory.ItemCheck -= checkedChange;
+            //Exp_presentations.ItemCheck -= checkedChange;
+            //Exp_videos.ItemCheck -= checkedChange;
+            //foreach (KeyValuePair<string, bool> pair in Configuration.books?.Items)
+            //    Exp_books.Items.Add(pair.Key, pair.Value);
+            //foreach (KeyValuePair<string, bool> pair in Configuration.discourse?.Items)
+            //    Exp_discourse.Items.Add(pair.Key, pair.Value);
+            //foreach (KeyValuePair<string, bool> pair in Configuration.laboratory?.Items)
+            //    Exp_laboratory.Items.Add(pair.Key, pair.Value);
+            //foreach (KeyValuePair<string, bool> pair in Configuration.presentations?.Items)
+            //    Exp_presentations.Items.Add(pair.Key, pair.Value);
+            //foreach (KeyValuePair<string, bool> pair in Configuration.videos?.Items)
+            //    Exp_videos.Items.Add(pair.Key, pair.Value);
+            //Exp_books.ItemCheck += checkedChange;
+            //Exp_discourse.ItemCheck += checkedChange;
+            //Exp_laboratory.ItemCheck += checkedChange;
+            //Exp_presentations.ItemCheck += checkedChange;
+            //Exp_videos.ItemCheck += checkedChange;
         }
 
         private void checkedChange(object sender, ItemCheckEventArgs e)

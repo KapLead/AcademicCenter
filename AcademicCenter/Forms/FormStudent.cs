@@ -22,6 +22,15 @@ namespace AcademicCenter
             InitializeComponent();
         }
 
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+#if DEBUG
+            fam.Text = name.Text= otch.Text = @group.Text="Test";
+            ok_Click(null, null);
+#endif
+        }
+
         private void ok_Click(object sender, EventArgs e)
         {
             UserFamile = fam.Text;

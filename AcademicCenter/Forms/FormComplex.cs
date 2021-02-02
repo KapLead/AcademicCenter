@@ -106,7 +106,7 @@ namespace AcademicCenter
             res.Add($"\r\nТест: {t.Title} ({t.Descrition})");
             for (var i = 0; i < t.Items.Count; i++)
             {
-                Item item = t.Items[i];
+                Quest item = t.Items[i];
                 res.Add($"{i+1} Вопрос - {item.Question}");
                 if(!_test.testings[i].ret.All(s=>s))
                     res[res.Count - 1] += $"\t ОШИБКА [===========]";
@@ -156,7 +156,7 @@ namespace AcademicCenter
             if (t == null) return;
             panelDoc.Controls.Clear();
             int i = 1;
-            foreach (Item item in t.Items)
+            foreach (Quest item in t.Items)
             {
                 Label title = new Label 
                 { 
@@ -218,5 +218,10 @@ namespace AcademicCenter
             }
         }
         private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e) => new FormAbout().ShowDialog();
+
+        private void редакторТестовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FormEditTet().ShowDialog();
+        }
     }
 }

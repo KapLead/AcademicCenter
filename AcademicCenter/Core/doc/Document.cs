@@ -4,9 +4,9 @@
     public class Document
     {
         /// <summary> имя файла </summary>
-        public string Name { get; set; }
-        
+        public string Name { get; set; } = "";
+
         /// <summary> префикс документа </summary>
-        public string Path { get; set; }
+        public string Path { get; set; } = "";
     }
 }

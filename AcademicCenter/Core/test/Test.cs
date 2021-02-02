@@ -11,16 +11,28 @@ namespace AcademicCenter
     {
         
         /// <summary> заголовок дисциплины </summary>
-        public string Title { get; set; }
+        public string Title { get; set; } = "";
 
         /// <summary> заголовок дисциплины </summary>
-        public string Descrition { get; set; }
- 
+        public string Descrition { get; set; } = "";
+
         /// <summary> Вид теста </summary>
-        public Type Type { get; set; }
+        public Type Type { get; set; } = Type.Обучение;
 
         /// <summary> Вопросы теста </summary>
-        public List<Item> Items { get; set; } = new List<Item>();
+        public List<Quest> Items { get; set; } = new List<Quest>
+        {
+            new Quest
+            {
+                Answers = new List<Answer>
+                {
+                    new Answer
+                    {
+                        Documents = new List<Document>()
+                    }
+                }
+            }
+        };
             
 
     }

@@ -10,13 +10,13 @@ namespace AcademicCenter
     {
 
         /// <summary> наименование дисциплины </summary>
-        public string Name { get; set; }
+        public string Name { get; set; } = "";
         
         /// <summary> заголовок дисциплины </summary>
-        public string Title { get; set; }
+        public string Title { get; set; } = "";
 
         /// <summary> заголовок дисциплины </summary>
-        public string Descrition { get; set; }
+        public string Descrition { get; set; } = "";
 
         /// <summary> Тесты по дисциплине </summary>
         public List<Test> Tests { get; set; } = new List<Test>();
