@@ -41,8 +41,9 @@ namespace AcademicCenter
             if (string.IsNullOrWhiteSpace(FormStudent.UserFamile) || string.IsNullOrWhiteSpace(FormStudent.UserFamile) ||
                 string.IsNullOrWhiteSpace(FormStudent.UserFamile) || string.IsNullOrWhiteSpace(FormStudent.UserFamile))
             {
-                MessageBox.Show(@"Введены не полные данные. Тестирование не возможно", @"Завершение работы");
-                Close();
+                new FormStudent().ShowDialog();
+                //MessageBox.Show(@"Введены не полные данные. Тестирование не возможно", @"Завершение работы");
+                //Close();
             }
 
             label2.Text = $@"Тестируемый : студент группы(класса) '{FormStudent.UserGroup}'

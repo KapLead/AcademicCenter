@@ -104,9 +104,16 @@ namespace AcademicCenter
             {
                 textBox1.Text = textBox2.Text = "";
                 comboBox1.SelectedIndex = -1;
+                listQuestion.Items.Clear();
+                listAnswer.Items.Clear();
                 return;
             }
             Test t = d.Tests[listTest.SelectedIndex];
+            if (t.Items.Count == 0)
+            {
+                listQuestion.Items.Clear();
+                listAnswer.Items.Clear();
+            }
             textBox1.Text = t.Title;
             textBox2.Text = t.Descrition;
             comboBox1.SelectedIndex = (int)t.Type;
@@ -167,7 +174,7 @@ namespace AcademicCenter
         private void listAnswer_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (listAnswer.SelectedIndex < 0) return;
-            Answer a = (Answer)listAnswer.Items[listAnswer.SelectedIndex];
+            Answer a = d.Tests[listTest.SelectedIndex].Items[listQuestion.SelectedIndex].Answers[listAnswer.SelectedIndex];
             if (a == null) return;
             textBox3.TextChanged -= textBox3_TextChanged;
             dataGridView1.CurrentCellChanged -= dataGridView1_CurrentCellChanged;
@@ -177,12 +184,16 @@ namespace AcademicCenter
             {
                 dataGridView1.Rows.Clear();
             }
-            catch { }
+            catch
+            {
+
+            }
             foreach (Document d in a.Documents)
             {
                 try
                 {
-                    dataGridView1.Rows.Add(d.Name, d.Path);
+                    if(!string.IsNullOrEmpty(d.Name))
+                        dataGridView1.Rows.Add(d.Name, d.Path);
                 }
                 catch { }
             }
@@ -273,6 +284,12 @@ namespace AcademicCenter
         private void listAnswer_DrawItem(object sender, DrawItemEventArgs e)
         {
             if (e.Index < 0) return;
+            if (listQuestion.SelectedIndex < 0)
+            {
+                listQuestion.Items.Clear();
+                listAnswer.Items.Clear();
+                return;
+            }
             Answer t = d.Tests[listTest.SelectedIndex].Items[listQuestion.SelectedIndex].Answers[e.Index];
             if (t == null) return;
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
@@ -293,11 +310,12 @@ namespace AcademicCenter
             a.Documents = new List<Document>();
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                a.Documents.Add(new Document
-                {
-                    Name = row.Cells[0].Value?.ToString() ?? "",
-                    Path = row.Cells[1].Value?.ToString() ?? ""
-                });
+                if(!string.IsNullOrEmpty(row.Cells[0].Value?.ToString()))
+                    a.Documents.Add(new Document
+                    {
+                        Name = row.Cells[0].Value?.ToString() ?? "",
+                        Path = row.Cells[1].Value?.ToString() ?? ""
+                    });
             }
             Quest q = (Quest)listQuestion.Items[listQuestion.SelectedIndex];
             if (q == null) return;
@@ -350,5 +368,42 @@ namespace AcademicCenter
                  
             button5.Left = dataGridView1.Right - button5.Width - (dataGridView1.Controls.OfType<VScrollBar>().First()?.Visible ?? false ? 16 : 0);
        }
+
+        private void добавитьНовыйДокументToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Add(new[] {"Новый", ""});
+            d.Tests[listTest.SelectedIndex]
+                .Items[listQuestion.SelectedIndex]
+                .Answers[listAnswer.SelectedIndex]
+                .Documents.Add(new Document{Name = "Новый", Path = ""});
+            for (int i = d.Tests[listTest.SelectedIndex].Items[listQuestion.SelectedIndex].Answers[listAnswer.SelectedIndex].Documents.Count - 1;i >= 0;i--)
+            {
+                if(d.Tests[listTest.SelectedIndex].Items[listQuestion.SelectedIndex].Answers[listAnswer.SelectedIndex].Documents[i].Path=="" &&
+                   d.Tests[listTest.SelectedIndex].Items[listQuestion.SelectedIndex].Answers[listAnswer.SelectedIndex].Documents[i].Name=="")
+                    d.Tests[listTest.SelectedIndex].Items[listQuestion.SelectedIndex].Answers[listAnswer.SelectedIndex].Documents.RemoveAt(i);
+            }
+        }
+
+        private void удалитьВыделенныйДокументToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedCells.Count < 1) return;
+            if (MessageBox.Show($@"Удалить документ : {dataGridView1.SelectedCells[0].Value} ?", @"Удаление документа", MessageBoxButtons.YesNo, MessageBoxIcon.Question) !=
+                DialogResult.Yes) return;
+            try
+            {
+                d.Tests[listTest.SelectedIndex]
+                    .Items[listQuestion.SelectedIndex]
+                    .Answers[listAnswer.SelectedIndex]
+                    .Documents.RemoveAt(dataGridView1.SelectedCells[0].RowIndex);
+                dataGridView1.Rows.RemoveAt(dataGridView1.SelectedCells[0].RowIndex);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                var old = listAnswer.SelectedIndex;
+                listAnswer.SelectedIndex = -1;
+                listAnswer.SelectedIndex = old;
+            }
+        }
     }
 }

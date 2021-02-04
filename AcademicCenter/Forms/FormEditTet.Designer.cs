@@ -29,6 +29,7 @@ namespace AcademicCenter
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEditTet));
             this.panel1 = new System.Windows.Forms.Panel();
             this.listTest = new System.Windows.Forms.ListBox();
@@ -65,12 +66,19 @@ namespace AcademicCenter
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.listAnswer = new System.Windows.Forms.ListBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.добавитьНовыйДокументToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.удалитьВыделенныйДокументToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.обновитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -306,9 +314,9 @@ namespace AcademicCenter
             this.panel5.Controls.Add(this.save);
             this.panel5.Controls.Add(this.label3);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(616, 233);
+            this.panel5.Location = new System.Drawing.Point(616, 150);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(371, 216);
+            this.panel5.Size = new System.Drawing.Size(371, 299);
             this.panel5.TabIndex = 3;
             // 
             // button5
@@ -329,7 +337,7 @@ namespace AcademicCenter
             this.answerDel.BackColor = System.Drawing.Color.Tomato;
             this.answerDel.FlatAppearance.BorderSize = 0;
             this.answerDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.answerDel.Location = new System.Drawing.Point(79, 190);
+            this.answerDel.Location = new System.Drawing.Point(79, 273);
             this.answerDel.Name = "answerDel";
             this.answerDel.Size = new System.Drawing.Size(28, 23);
             this.answerDel.TabIndex = 10;
@@ -343,7 +351,7 @@ namespace AcademicCenter
             this.answerAdd.BackColor = System.Drawing.Color.GreenYellow;
             this.answerAdd.FlatAppearance.BorderSize = 0;
             this.answerAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.answerAdd.Location = new System.Drawing.Point(113, 190);
+            this.answerAdd.Location = new System.Drawing.Point(113, 273);
             this.answerAdd.Name = "answerAdd";
             this.answerAdd.Size = new System.Drawing.Size(28, 23);
             this.answerAdd.TabIndex = 9;
@@ -362,6 +370,7 @@ namespace AcademicCenter
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
+            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridView1.Location = new System.Drawing.Point(0, 13);
             this.dataGridView1.Name = "dataGridView1";
@@ -370,7 +379,7 @@ namespace AcademicCenter
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.ShowEditingIcon = false;
             this.dataGridView1.ShowRowErrors = false;
-            this.dataGridView1.Size = new System.Drawing.Size(371, 123);
+            this.dataGridView1.Size = new System.Drawing.Size(371, 206);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
@@ -399,9 +408,8 @@ namespace AcademicCenter
             // 
             // textBox3
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(79, 163);
+            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBox3.Location = new System.Drawing.Point(79, 246);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(184, 20);
@@ -410,8 +418,9 @@ namespace AcademicCenter
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(2, 139);
+            this.label6.Location = new System.Drawing.Point(2, 222);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(71, 26);
             this.label6.TabIndex = 6;
@@ -420,8 +429,9 @@ namespace AcademicCenter
             // 
             // checkBox1
             // 
+            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(29, 167);
+            this.checkBox1.Location = new System.Drawing.Point(29, 250);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 5;
@@ -434,7 +444,7 @@ namespace AcademicCenter
             this.save.BackColor = System.Drawing.Color.GreenYellow;
             this.save.FlatAppearance.BorderSize = 0;
             this.save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.save.Location = new System.Drawing.Point(281, 146);
+            this.save.Location = new System.Drawing.Point(281, 229);
             this.save.Name = "save";
             this.save.Size = new System.Drawing.Size(87, 61);
             this.save.TabIndex = 2;
@@ -444,8 +454,9 @@ namespace AcademicCenter
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(79, 151);
+            this.label3.Location = new System.Drawing.Point(79, 234);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 0;
@@ -469,7 +480,7 @@ namespace AcademicCenter
             this.listAnswer.ItemHeight = 24;
             this.listAnswer.Location = new System.Drawing.Point(616, 0);
             this.listAnswer.Name = "listAnswer";
-            this.listAnswer.Size = new System.Drawing.Size(371, 233);
+            this.listAnswer.Size = new System.Drawing.Size(371, 150);
             this.listAnswer.TabIndex = 5;
             this.listAnswer.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listAnswer_DrawItem);
             this.listAnswer.SelectedIndexChanged += new System.EventHandler(this.listAnswer_SelectedIndexChanged_1);
@@ -477,6 +488,47 @@ namespace AcademicCenter
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.добавитьНовыйДокументToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.удалитьВыделенныйДокументToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.обновитьToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(247, 82);
+            // 
+            // добавитьНовыйДокументToolStripMenuItem
+            // 
+            this.добавитьНовыйДокументToolStripMenuItem.Name = "добавитьНовыйДокументToolStripMenuItem";
+            this.добавитьНовыйДокументToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.добавитьНовыйДокументToolStripMenuItem.Text = "Добавить новый документ";
+            this.добавитьНовыйДокументToolStripMenuItem.Click += new System.EventHandler(this.добавитьНовыйДокументToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(243, 6);
+            // 
+            // удалитьВыделенныйДокументToolStripMenuItem
+            // 
+            this.удалитьВыделенныйДокументToolStripMenuItem.Name = "удалитьВыделенныйДокументToolStripMenuItem";
+            this.удалитьВыделенныйДокументToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.удалитьВыделенныйДокументToolStripMenuItem.Text = "Удалить выделенный документ";
+            this.удалитьВыделенныйДокументToolStripMenuItem.Click += new System.EventHandler(this.удалитьВыделенныйДокументToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(243, 6);
+            // 
+            // обновитьToolStripMenuItem
+            // 
+            this.обновитьToolStripMenuItem.Name = "обновитьToolStripMenuItem";
+            this.обновитьToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.обновитьToolStripMenuItem.Text = "Обновить";
             // 
             // FormEditTet
             // 
@@ -503,6 +555,7 @@ namespace AcademicCenter
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -544,5 +597,11 @@ namespace AcademicCenter
         private System.Windows.Forms.Button answerAdd;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem добавитьНовыйДокументToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem удалитьВыделенныйДокументToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem обновитьToolStripMenuItem;
     }
 }
