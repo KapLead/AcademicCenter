@@ -6,41 +6,41 @@ namespace AcademicCenter
 {
     public static class Configuration
     {
-        //public static ExtensionVariable discourse;
-        //public static ExtensionVariable presentations;
-        //public static ExtensionVariable laboratory;
-        //public static ExtensionVariable books;
-        //public static ExtensionVariable videos;
-    
+        public static ExtensionVariable discourse;
+        public static ExtensionVariable presentations;
+        public static ExtensionVariable laboratory;
+        public static ExtensionVariable books;
+        public static ExtensionVariable videos;
+
         public static List<Discipline> Disciplines;
         public static void Initialization()
         {
-            //init(out discourse, "ext\\discourse");
-            //init(out presentations, "ext\\presentations");
-            //init(out laboratory, "ext\\laboratory");
-            //init(out books, "ext\\books");
-            //init(out videos, "ext\\videos");
-            Disciplines=GetDisciplines();
+            init(out discourse, "ext\\discourse");
+            init(out presentations, "ext\\presentations");
+            init(out laboratory, "ext\\laboratory");
+            init(out books, "ext\\books");
+            init(out videos, "ext\\videos");
+            Disciplines =GetDisciplines();
         }
 
-        //static void init(out ExtensionVariable dic,string name)
-        //{
-        //    if (File.Exists(  $"{JsonSettings.FolderPath}{name}.json"))
-        //        dic = JsonSettings.Get<ExtensionVariable>(name);
-        //    else
-        //    {
-        //        dic = new ExtensionVariable { Items = new Dictionary<string, bool>() };// DefaultDict()
-        //        JsonSettings.Save(dic, name);
-        //    }
-        //}
+        static void init(out ExtensionVariable dic, string name)
+        {
+            if (File.Exists($"{JsonSettings.FolderPath}{name}.json"))
+                dic = JsonSettings.Get<ExtensionVariable>(name);
+            else
+            {
+                dic = new ExtensionVariable { Items = new Dictionary<string, bool>() };// DefaultDict()
+                JsonSettings.Save(dic, name);
+            }
+        }
 
-        //static Dictionary<string, bool> DefaultDict()
-        //{
-        //    Dictionary<string, bool> dic = new Dictionary<string, bool>();
-        //    foreach (string extension in Settings.Default.Extensions)
-        //        dic.Add(extension,false);
-        //    return dic;
-        //}
+        static Dictionary<string, bool> DefaultDict()
+        {
+            Dictionary<string, bool> dic = new Dictionary<string, bool>();
+            foreach (string extension in Settings.Default.Extensions)
+                dic.Add(extension, false);
+            return dic;
+        }
 
         /// <summary> Все дисциплины </summary>
         public static List<Discipline> GetDisciplines()

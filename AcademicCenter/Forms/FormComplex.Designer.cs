@@ -63,10 +63,20 @@ namespace AcademicCenter
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.docAll = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.docLabs = new System.Windows.Forms.Button();
+            this.docKurs = new System.Windows.Forms.Button();
+            this.docBooks = new System.Windows.Forms.Button();
+            this.docVideos = new System.Windows.Forms.Button();
+            this.docOthers = new System.Windows.Forms.Button();
+            this.addDoc = new System.Windows.Forms.Button();
             this.pListTest.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panelDocs.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // комплексToolStripMenuItem
@@ -314,7 +324,9 @@ namespace AcademicCenter
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel7.Controls.Add(this.addDoc);
             this.panel7.Controls.Add(this.panelDoc);
+            this.panel7.Controls.Add(this.panel1);
             this.panel7.Controls.Add(this.label4);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(0, 0);
@@ -330,7 +342,7 @@ namespace AcademicCenter
             this.panelDoc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDoc.Location = new System.Drawing.Point(1, 26);
             this.panelDoc.Name = "panelDoc";
-            this.panelDoc.Size = new System.Drawing.Size(463, 378);
+            this.panelDoc.Size = new System.Drawing.Size(463, 339);
             this.panelDoc.TabIndex = 5;
             // 
             // label4
@@ -363,6 +375,145 @@ namespace AcademicCenter
             this.panel6.Size = new System.Drawing.Size(467, 3);
             this.panel6.TabIndex = 5;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Gray;
+            this.panel1.Controls.Add(this.docOthers);
+            this.panel1.Controls.Add(this.docVideos);
+            this.panel1.Controls.Add(this.docBooks);
+            this.panel1.Controls.Add(this.docKurs);
+            this.panel1.Controls.Add(this.docLabs);
+            this.panel1.Controls.Add(this.docAll);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(1, 365);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(463, 39);
+            this.panel1.TabIndex = 0;
+            // 
+            // docAll
+            // 
+            this.docAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.docAll.BackColor = System.Drawing.Color.White;
+            this.docAll.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.docAll.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.docAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.docAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.docAll.Location = new System.Drawing.Point(7, -1);
+            this.docAll.Name = "docAll";
+            this.docAll.Size = new System.Drawing.Size(36, 34);
+            this.docAll.TabIndex = 0;
+            this.docAll.Tag = "0";
+            this.docAll.Text = "Все";
+            this.docAll.UseVisualStyleBackColor = false;
+            this.docAll.Click += new System.EventHandler(this.docOthers_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(463, 1);
+            this.panel2.TabIndex = 1;
+            // 
+            // docLabs
+            // 
+            this.docLabs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.docLabs.BackColor = System.Drawing.Color.White;
+            this.docLabs.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.docLabs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.docLabs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.docLabs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.docLabs.Location = new System.Drawing.Point(42, 0);
+            this.docLabs.Name = "docLabs";
+            this.docLabs.Size = new System.Drawing.Size(95, 34);
+            this.docLabs.TabIndex = 2;
+            this.docLabs.Tag = "1";
+            this.docLabs.Text = "Лаболаторные";
+            this.docLabs.UseVisualStyleBackColor = false;
+            this.docLabs.Click += new System.EventHandler(this.docOthers_Click);
+            // 
+            // docKurs
+            // 
+            this.docKurs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.docKurs.BackColor = System.Drawing.Color.White;
+            this.docKurs.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.docKurs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.docKurs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.docKurs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.docKurs.Location = new System.Drawing.Point(136, 0);
+            this.docKurs.Name = "docKurs";
+            this.docKurs.Size = new System.Drawing.Size(74, 34);
+            this.docKurs.TabIndex = 3;
+            this.docKurs.Tag = "2";
+            this.docKurs.Text = "Курсовые";
+            this.docKurs.UseVisualStyleBackColor = false;
+            this.docKurs.Click += new System.EventHandler(this.docOthers_Click);
+            // 
+            // docBooks
+            // 
+            this.docBooks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.docBooks.BackColor = System.Drawing.Color.White;
+            this.docBooks.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.docBooks.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.docBooks.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.docBooks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.docBooks.Location = new System.Drawing.Point(209, 0);
+            this.docBooks.Name = "docBooks";
+            this.docBooks.Size = new System.Drawing.Size(54, 34);
+            this.docBooks.TabIndex = 4;
+            this.docBooks.Tag = "3";
+            this.docBooks.Text = "Книги";
+            this.docBooks.UseVisualStyleBackColor = false;
+            this.docBooks.Click += new System.EventHandler(this.docOthers_Click);
+            // 
+            // docVideos
+            // 
+            this.docVideos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.docVideos.BackColor = System.Drawing.Color.White;
+            this.docVideos.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.docVideos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.docVideos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.docVideos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.docVideos.Location = new System.Drawing.Point(262, 0);
+            this.docVideos.Name = "docVideos";
+            this.docVideos.Size = new System.Drawing.Size(54, 34);
+            this.docVideos.TabIndex = 5;
+            this.docVideos.Tag = "4";
+            this.docVideos.Text = "Видео";
+            this.docVideos.UseVisualStyleBackColor = false;
+            this.docVideos.Click += new System.EventHandler(this.docOthers_Click);
+            // 
+            // docOthers
+            // 
+            this.docOthers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.docOthers.BackColor = System.Drawing.Color.White;
+            this.docOthers.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.docOthers.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.docOthers.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.docOthers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.docOthers.Location = new System.Drawing.Point(315, 0);
+            this.docOthers.Name = "docOthers";
+            this.docOthers.Size = new System.Drawing.Size(54, 34);
+            this.docOthers.TabIndex = 6;
+            this.docOthers.Tag = "5";
+            this.docOthers.Text = "Прочее";
+            this.docOthers.UseVisualStyleBackColor = false;
+            this.docOthers.Click += new System.EventHandler(this.docOthers_Click);
+            // 
+            // addDoc
+            // 
+            this.addDoc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.addDoc.BackColor = System.Drawing.Color.White;
+            this.addDoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addDoc.Location = new System.Drawing.Point(429, 367);
+            this.addDoc.Name = "addDoc";
+            this.addDoc.Size = new System.Drawing.Size(35, 35);
+            this.addDoc.TabIndex = 7;
+            this.addDoc.Text = "+";
+            this.addDoc.UseVisualStyleBackColor = false;
+            // 
             // FormComplex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -382,6 +533,7 @@ namespace AcademicCenter
             this.menuStrip1.PerformLayout();
             this.panelDocs.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -421,6 +573,15 @@ namespace AcademicCenter
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem редакторТестовToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button docAll;
+        private System.Windows.Forms.Button addDoc;
+        private System.Windows.Forms.Button docOthers;
+        private System.Windows.Forms.Button docVideos;
+        private System.Windows.Forms.Button docBooks;
+        private System.Windows.Forms.Button docKurs;
+        private System.Windows.Forms.Button docLabs;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 

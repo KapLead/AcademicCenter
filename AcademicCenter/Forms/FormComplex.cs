@@ -14,11 +14,14 @@ namespace AcademicCenter
     {
         private TestUserControl _test;
         private bool _backend = true;
-        
+        private int currFiltrDoc = 0;
+        private Button[] fltrDoc = null;
+
         public FormComplex()
         {
             InitializeComponent();
             Text +=Settings.Default.Discipline;
+            fltrDoc = new[] {docAll,docLabs,docKurs,docBooks,docVideos,docOthers};
         }
         public sealed override string Text
         {
@@ -178,6 +181,8 @@ namespace AcademicCenter
                 foreach (Document d in doc)
                 {
                     if(d.Name==null && d.Path==null) continue;
+                    var exp = Path.GetExtension(d.Path);
+                    if(currFiltrDoc==1 && !Configuration.laboratory.Items.(exp)) continue;
                     var b = new Button
                     {
                         Tag = d.Path,
@@ -211,6 +216,16 @@ namespace AcademicCenter
         {
             new FormEditTet().ShowDialog(); 
             ConfigMenu();
+        }
+
+        private void docOthers_Click(object sender, EventArgs e)
+        {
+            fltrDoc[currFiltrDoc].Top = 0;
+            Button l = (Button) sender;
+            currFiltrDoc = int.Parse(l.Tag.ToString());
+            fltrDoc[currFiltrDoc].Top = -1;
+            panel1.Focus();
+            toolDocs_Click(sender, e);
         }
     }
 }
