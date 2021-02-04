@@ -44,6 +44,8 @@ namespace AcademicCenter
             this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.комплексToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.редакторТестовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.тестыToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.документыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,21 +58,14 @@ namespace AcademicCenter
             this.помощьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelDocs = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.listTest2 = new System.Windows.Forms.ListBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panelDoc = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.редакторТестовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.pListTest.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panelDocs.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -211,10 +206,22 @@ namespace AcademicCenter
             this.комплексToolStripMenuItem2.Size = new System.Drawing.Size(74, 20);
             this.комплексToolStripMenuItem2.Text = "Комплекс";
             // 
+            // редакторТестовToolStripMenuItem
+            // 
+            this.редакторТестовToolStripMenuItem.Name = "редакторТестовToolStripMenuItem";
+            this.редакторТестовToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.редакторТестовToolStripMenuItem.Text = "Редактор тестов";
+            this.редакторТестовToolStripMenuItem.Click += new System.EventHandler(this.редакторТестовToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(159, 6);
+            // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.exit_Click);
             // 
@@ -243,7 +250,7 @@ namespace AcademicCenter
             // оПрограммеToolStripMenuItem1
             // 
             this.оПрограммеToolStripMenuItem1.Name = "оПрограммеToolStripMenuItem1";
-            this.оПрограммеToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.оПрограммеToolStripMenuItem1.Size = new System.Drawing.Size(151, 22);
             this.оПрограммеToolStripMenuItem1.Text = "О Программе";
             this.оПрограммеToolStripMenuItem1.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
             // 
@@ -295,64 +302,25 @@ namespace AcademicCenter
             // 
             this.panelDocs.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelDocs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelDocs.Controls.Add(this.panel2);
             this.panelDocs.Controls.Add(this.panel7);
             this.panelDocs.Controls.Add(this.panel4);
-            this.panelDocs.Controls.Add(this.panel3);
             this.panelDocs.Controls.Add(this.panel6);
-            this.panelDocs.Location = new System.Drawing.Point(100, 94);
+            this.panelDocs.Location = new System.Drawing.Point(161, 45);
             this.panelDocs.Name = "panelDocs";
-            this.panelDocs.Size = new System.Drawing.Size(622, 296);
+            this.panelDocs.Size = new System.Drawing.Size(469, 409);
             this.panelDocs.TabIndex = 4;
             this.panelDocs.Visible = false;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.listTest2);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(383, 291);
-            this.panel2.TabIndex = 0;
-            // 
-            // listTest2
-            // 
-            this.listTest2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listTest2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listTest2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.listTest2.FormattingEnabled = true;
-            this.listTest2.IntegralHeight = false;
-            this.listTest2.ItemHeight = 34;
-            this.listTest2.Location = new System.Drawing.Point(0, 26);
-            this.listTest2.Name = "listTest2";
-            this.listTest2.Size = new System.Drawing.Size(383, 265);
-            this.listTest2.TabIndex = 2;
-            this.listTest2.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listTest_DrawItem);
-            this.listTest2.SelectedIndexChanged += new System.EventHandler(this.listTest2_SelectedIndexChanged);
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.Color.Gray;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(0, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(383, 26);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "ТЕСТЫ ПО ДИСЦИПЛИНЕ";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.panel7.Controls.Add(this.panelDoc);
             this.panel7.Controls.Add(this.label4);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel7.Location = new System.Drawing.Point(386, 0);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            this.panel7.Size = new System.Drawing.Size(231, 291);
+            this.panel7.Size = new System.Drawing.Size(464, 404);
             this.panel7.TabIndex = 7;
             // 
             // panelDoc
@@ -362,7 +330,7 @@ namespace AcademicCenter
             this.panelDoc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDoc.Location = new System.Drawing.Point(1, 26);
             this.panelDoc.Name = "panelDoc";
-            this.panelDoc.Size = new System.Drawing.Size(230, 265);
+            this.panelDoc.Size = new System.Drawing.Size(463, 378);
             this.panelDoc.TabIndex = 5;
             // 
             // label4
@@ -372,49 +340,28 @@ namespace AcademicCenter
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(1, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(230, 26);
+            this.label4.Size = new System.Drawing.Size(463, 26);
             this.label4.TabIndex = 4;
-            this.label4.Text = "ДОКУМЕНТЫ И МАТЕРИАЛЫ ПО ТЕСТУ";
+            this.label4.Text = "ДОКУМЕНТЫ ПО ДИСЦИПЛИНЕ";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Gray;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(617, 0);
+            this.panel4.Location = new System.Drawing.Point(464, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(3, 291);
+            this.panel4.Size = new System.Drawing.Size(3, 404);
             this.panel4.TabIndex = 2;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Gray;
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(3, 291);
-            this.panel3.TabIndex = 1;
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.Gray;
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 291);
+            this.panel6.Location = new System.Drawing.Point(0, 404);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(620, 3);
+            this.panel6.Size = new System.Drawing.Size(467, 3);
             this.panel6.TabIndex = 5;
-            // 
-            // редакторТестовToolStripMenuItem
-            // 
-            this.редакторТестовToolStripMenuItem.Name = "редакторТестовToolStripMenuItem";
-            this.редакторТестовToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.редакторТестовToolStripMenuItem.Text = "Редактор тестов";
-            this.редакторТестовToolStripMenuItem.Click += new System.EventHandler(this.редакторТестовToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
             // 
             // FormComplex
             // 
@@ -428,13 +375,12 @@ namespace AcademicCenter
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormComplex";
-            this.Text = "Обучающе-тестирующий комплекс по учебной дисциплине ";
+            this.Text = "Обучающе-тестирующий комплекс по учебной дисциплине : ";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.pListTest.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelDocs.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -462,13 +408,9 @@ namespace AcademicCenter
         private System.Windows.Forms.ToolStripMenuItem помощьToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.Panel panelDocs;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.ListBox listTest2;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panelDoc;
         private System.Windows.Forms.ToolStripMenuItem комплексToolStripMenuItem2;

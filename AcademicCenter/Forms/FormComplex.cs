@@ -18,7 +18,7 @@ namespace AcademicCenter
         public FormComplex()
         {
             InitializeComponent();
-            Text +=@""""+Settings.Default.Discipline+ @"""";
+            Text +=Settings.Default.Discipline;
         }
         public sealed override string Text
         {
@@ -32,9 +32,7 @@ namespace AcademicCenter
         {
             if(Configuration.Disciplines.Count==0) return;
             listTest.Items.Clear();
-            listTest2.Items.Clear();
             listTest.Items.AddRange(Configuration.Disciplines[0]?.Tests?.ToArray());
-            listTest2.Items.AddRange(Configuration.Disciplines[0]?.Tests?.ToArray());
             pListTest.Visible = true;
             Application.DoEvents();
             new FormStudent().ShowDialog();
@@ -53,7 +51,7 @@ namespace AcademicCenter
 
             if (listTest.Items.Count > 0)
             {
-                listTest.SelectedIndex = listTest2.SelectedIndex = 0;
+                listTest.SelectedIndex = 0;
             }
         }
         private void listTest_DrawItem(object sender, DrawItemEventArgs e)
@@ -148,76 +146,65 @@ namespace AcademicCenter
         private void toolDocs_Click(object sender, EventArgs e)
         {
             pListTest.Visible =false;
-            panelDocs.Visible =true;
-        }
-        private void listTest2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listTest2.SelectedIndex < 0) return;
-            Test t = (Test)listTest2.Items[listTest2.SelectedIndex];
-            if (t == null) return;
+           
             panelDoc.Controls.Clear();
             int i = 1;
-            foreach (Quest item in t.Items)
+            List<Document> doc = new List<Document>();
+            foreach (Test test in Configuration.Disciplines[0].Tests)
+                foreach (Quest item in test.Items)
+                    foreach (Answer answer in item.Answers)
+                        foreach (Document document in answer.Documents)
+                            if (doc.All(d => d.Name != document.Name))
+                                doc.Add(document);
+
+            if (doc.Count == 0)
             {
-                Label title = new Label 
-                { 
-                    Text =$@"{i++} {item.Question}", 
-                    AutoEllipsis = true,
+                panelDoc.Controls.Add(new Label
+                {
+                    Text = @"без документов",
+                    ForeColor = Color.DimGray,
                     AutoSize = false,
-                    Dock = DockStyle.Top
-                };
-                panelDoc.Controls.Add(title);
-                title.BringToFront();
-                List<Document> doc = new List<Document>();
-                foreach (Answer answer in item.Answers)
+                    TextAlign = ContentAlignment.MiddleCenter
+                });
+                panelDoc.Controls[panelDoc.Controls.Count - 1].BringToFront();
+            }
+            else
+            {
+                doc.Sort(delegate(Document x, Document y)
                 {
-                    foreach (Document document in answer.Documents)
-                    {
-                        if (doc.All(d => d.Name != document.Name))
-                            doc.Add(document);
-                    }
-                }
-                if(doc.Count==0) 
+                    if (x.Name == y.Name) return 0;
+                    return String.Compare(x.Name, y.Name, StringComparison.Ordinal);
+                });
+                foreach (Document d in doc)
                 {
-                    panelDoc.Controls.Add(new Label
+                    if(d.Name==null && d.Path==null) continue;
+                    var b = new Button
                     {
-                        Text = @"без документов",
-                        ForeColor = Color.DimGray, 
+                        Tag = d.Path,
+                        Text = d.Name??d.Path,
                         AutoSize = false,
-                        TextAlign = ContentAlignment.MiddleCenter
-                    });
-                    panelDoc.Controls[panelDoc.Controls.Count - 1].BringToFront();
-                }
-                else
-                {
-                    foreach (Document d in doc)
+                        Dock = DockStyle.Top,
+                        ForeColor = Color.DimGray,
+                        FlatStyle = FlatStyle.Flat,
+                        TextAlign = ContentAlignment.MiddleLeft,
+                        Padding = new Padding(10, 0, 0, 0),
+                        FlatAppearance =
+                        {
+                            BorderSize = 0
+                        }
+                    };
+                    panelDoc.Controls.Add(b);
+                    b.BringToFront();
+                    b.Click += (o, args) =>
                     {
-                        var b = new Button
-                        {
-                            Tag = d.Path,
-                            Text = d.Name,
-                            AutoSize = false,
-                            Dock = DockStyle.Top,
-                            ForeColor = Color.DimGray,
-                            FlatStyle = FlatStyle.Flat,
-                            TextAlign = ContentAlignment.MiddleLeft,
-                            Padding = new Padding(10, 0, 0, 0),
-                            FlatAppearance =
-                            {
-                                BorderSize = 0
-                            }
-                        };
-                        panelDoc.Controls.Add(b);
-                        b.BringToFront();
-                        b.Click += (o, args) =>
-                        {
-                            var tag = ((Button) o)?.Tag;
-                            if (tag != null) Process.Start(tag.ToString());
-                        };
-                    }
+                        var tag = ((Button) o)?.Tag;
+                        if (tag != null) Process.Start(tag.ToString());
+                    };
                 }
             }
+            panelDocs.Visible =true;
         }
+
         private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e) => new FormAbout().ShowDialog();
 
         private void редакторТестовToolStripMenuItem_Click(object sender, EventArgs e)
