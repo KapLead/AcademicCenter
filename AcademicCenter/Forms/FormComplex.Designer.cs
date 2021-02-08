@@ -72,6 +72,7 @@ namespace AcademicCenter
             this.docVideos = new System.Windows.Forms.Button();
             this.docOthers = new System.Windows.Forms.Button();
             this.addDoc = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.pListTest.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panelDocs.SuspendLayout();
@@ -319,7 +320,6 @@ namespace AcademicCenter
             this.panelDocs.Name = "panelDocs";
             this.panelDocs.Size = new System.Drawing.Size(469, 409);
             this.panelDocs.TabIndex = 4;
-            this.panelDocs.Visible = false;
             // 
             // panel7
             // 
@@ -331,7 +331,6 @@ namespace AcademicCenter
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Padding = new System.Windows.Forms.Padding(1, 0, 0, 0);
             this.panel7.Size = new System.Drawing.Size(464, 404);
             this.panel7.TabIndex = 7;
             // 
@@ -340,9 +339,9 @@ namespace AcademicCenter
             this.panelDoc.AutoScroll = true;
             this.panelDoc.BackColor = System.Drawing.SystemColors.Window;
             this.panelDoc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDoc.Location = new System.Drawing.Point(1, 26);
+            this.panelDoc.Location = new System.Drawing.Point(0, 26);
             this.panelDoc.Name = "panelDoc";
-            this.panelDoc.Size = new System.Drawing.Size(463, 339);
+            this.panelDoc.Size = new System.Drawing.Size(464, 339);
             this.panelDoc.TabIndex = 5;
             // 
             // label4
@@ -350,9 +349,9 @@ namespace AcademicCenter
             this.label4.BackColor = System.Drawing.Color.Gray;
             this.label4.Dock = System.Windows.Forms.DockStyle.Top;
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(1, 0);
+            this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(463, 26);
+            this.label4.Size = new System.Drawing.Size(464, 26);
             this.label4.TabIndex = 4;
             this.label4.Text = "ДОКУМЕНТЫ ПО ДИСЦИПЛИНЕ";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -386,15 +385,16 @@ namespace AcademicCenter
             this.panel1.Controls.Add(this.docAll);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(1, 365);
+            this.panel1.Location = new System.Drawing.Point(0, 365);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(463, 39);
+            this.panel1.Size = new System.Drawing.Size(464, 39);
             this.panel1.TabIndex = 0;
             // 
             // docAll
             // 
             this.docAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.docAll.BackColor = System.Drawing.Color.White;
+            this.docAll.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.docAll.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
             this.docAll.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.docAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
@@ -410,17 +410,18 @@ namespace AcademicCenter
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.BackColor = System.Drawing.Color.DarkGray;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(463, 1);
+            this.panel2.Size = new System.Drawing.Size(464, 1);
             this.panel2.TabIndex = 1;
             // 
             // docLabs
             // 
             this.docLabs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.docLabs.BackColor = System.Drawing.Color.White;
+            this.docLabs.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.docLabs.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
             this.docLabs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.docLabs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
@@ -438,6 +439,7 @@ namespace AcademicCenter
             // 
             this.docKurs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.docKurs.BackColor = System.Drawing.Color.White;
+            this.docKurs.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.docKurs.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
             this.docKurs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.docKurs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
@@ -455,6 +457,7 @@ namespace AcademicCenter
             // 
             this.docBooks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.docBooks.BackColor = System.Drawing.Color.White;
+            this.docBooks.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.docBooks.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
             this.docBooks.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.docBooks.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
@@ -472,6 +475,7 @@ namespace AcademicCenter
             // 
             this.docVideos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.docVideos.BackColor = System.Drawing.Color.White;
+            this.docVideos.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.docVideos.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
             this.docVideos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.docVideos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
@@ -489,6 +493,7 @@ namespace AcademicCenter
             // 
             this.docOthers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.docOthers.BackColor = System.Drawing.Color.White;
+            this.docOthers.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.docOthers.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
             this.docOthers.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.docOthers.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
@@ -506,6 +511,7 @@ namespace AcademicCenter
             // 
             this.addDoc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.addDoc.BackColor = System.Drawing.Color.White;
+            this.addDoc.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.addDoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addDoc.Location = new System.Drawing.Point(429, 367);
             this.addDoc.Name = "addDoc";
@@ -513,6 +519,11 @@ namespace AcademicCenter
             this.addDoc.TabIndex = 7;
             this.addDoc.Text = "+";
             this.addDoc.UseVisualStyleBackColor = false;
+            this.addDoc.Click += new System.EventHandler(this.addDoc_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // FormComplex
             // 
@@ -528,6 +539,7 @@ namespace AcademicCenter
             this.Name = "FormComplex";
             this.Text = "Обучающе-тестирующий комплекс по учебной дисциплине : ";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Shown += new System.EventHandler(this.FormComplex_Shown);
             this.pListTest.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -582,6 +594,7 @@ namespace AcademicCenter
         private System.Windows.Forms.Button docKurs;
         private System.Windows.Forms.Button docLabs;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

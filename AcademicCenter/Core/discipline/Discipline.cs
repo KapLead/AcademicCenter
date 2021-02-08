@@ -20,7 +20,7 @@ namespace AcademicCenter
 
         /// <summary> Тесты по дисциплине </summary>
         public List<Test> Tests { get; set; } = new List<Test>();
-
+        public List<Document> Docs { get; set; } = new List<Document>();
         [JsonIgnore] public IEnumerable<Document> Documents 
         { get {
                 List<Document> ret = new List<Document>();

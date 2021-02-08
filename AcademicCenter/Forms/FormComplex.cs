@@ -28,7 +28,11 @@ namespace AcademicCenter
             get => base.Text;
             set => base.Text = value;
         }
-        private void Form1_Load(object sender, EventArgs e) => ConfigMenu();
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            ConfigMenu(); 
+        }
+
         private void exit_Click(object sender, EventArgs e) => Close();
         private void settings_Click(object sender, EventArgs e) => new FormSettings().ShowDialog();
         private void ConfigMenu()
@@ -36,7 +40,6 @@ namespace AcademicCenter
             if(Configuration.Disciplines.Count==0) return;
             listTest.Items.Clear();
             listTest.Items.AddRange(Configuration.Disciplines[0]?.Tests?.ToArray());
-            pListTest.Visible = true;
             Application.DoEvents();
             new FormStudent().ShowDialog();
             if (string.IsNullOrWhiteSpace(FormStudent.UserFamile) || string.IsNullOrWhiteSpace(FormStudent.UserFamile) ||
@@ -129,7 +132,12 @@ namespace AcademicCenter
                     _test.Invoke(new Action((() =>
                     {
                         _test.Visible = false;
+                        Controls.Remove(_test);
                         pListTest.Visible = true;
+                        label2.Text = $@"Тестируемый : студент группы(класса) '{FormStudent.UserGroup}'
+" +
+                                      $@"	{FormStudent.UserFamile} {FormStudent.UserName} {FormStudent.UserOtchestvo}
+";
                     })));
                 };
             }
@@ -149,7 +157,7 @@ namespace AcademicCenter
         private void toolDocs_Click(object sender, EventArgs e)
         {
             pListTest.Visible =false;
-           
+
             panelDoc.Controls.Clear();
             int i = 1;
             List<Document> doc = new List<Document>();
@@ -159,6 +167,9 @@ namespace AcademicCenter
                         foreach (Document document in answer.Documents)
                             if (doc.All(d => d.Name != document.Name))
                                 doc.Add(document);
+            foreach (Document docs in Configuration.Disciplines[0].Docs)
+                if (doc.All(d => d.Name != docs.Name))
+                    doc.Add(docs);
 
             if (doc.Count == 0)
             {
@@ -181,8 +192,14 @@ namespace AcademicCenter
                 foreach (Document d in doc)
                 {
                     if(d.Name==null && d.Path==null) continue;
-                    var exp = Path.GetExtension(d.Path);
-                    if(currFiltrDoc==1 && !Configuration.laboratory.Items.(exp)) continue;
+                    var exp = Path.GetExtension(d.Path)?.Replace(".",null);
+                    if (currFiltrDoc == 1 && !Configuration.laboratory.Contain(exp)) continue;
+                    if (currFiltrDoc == 2 && !Configuration.discourse.Contain(exp)) continue;
+                    if (currFiltrDoc == 3 && !Configuration.books.Contain(exp)) continue;
+                    if (currFiltrDoc == 4 && !Configuration.videos.Contain(exp)) continue;
+                    if (currFiltrDoc == 5 && 
+                        ( Configuration.videos.Contain(exp) || Configuration.books.Contain(exp) ||
+                          Configuration.discourse.Contain(exp) || Configuration.laboratory.Contain(exp)) ) continue;
                     var b = new Button
                     {
                         Tag = d.Path,
@@ -226,6 +243,27 @@ namespace AcademicCenter
             fltrDoc[currFiltrDoc].Top = -1;
             panel1.Focus();
             toolDocs_Click(sender, e);
+        }
+
+        private void addDoc_Click(object sender, EventArgs e)
+        {
+            new FormName().ShowDialog();
+            if (FormName.Value=="") return;
+            openFileDialog1.InitialDirectory =
+                Path.GetDirectoryName(Application.StartupPath);
+            if(openFileDialog1.ShowDialog() != DialogResult.OK) return;
+            Configuration.Disciplines[0].Docs.Add(new Document
+            {
+                Name=FormName.Value, 
+                Path = openFileDialog1.FileName
+            });
+            Configuration.Disciplines[0].Save(JsonSettings.FolderPath + "\\discipline\\default.json");
+            toolDocs_Click(sender, e);
+        }
+
+        private void FormComplex_Shown(object sender, EventArgs e)
+        {
+            fltrDoc[currFiltrDoc].PerformClick();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace AcademicCenter
 {
@@ -11,6 +12,11 @@ namespace AcademicCenter
             Items = new Dictionary<string, bool>();
         }
 
-
+        public bool Contain(string exp)
+        {
+            exp = exp.ToUpper();
+            if (!Items.ContainsKey(exp)) return false;
+            return Items?.Where(d => d.Value && d.Key == exp)?.Count() > 0;
+        }
     }
 }
