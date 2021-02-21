@@ -158,7 +158,6 @@ namespace AcademicCenter
         {
             pListTest.Visible =false;
 
-            panelDoc.Controls.Clear();
             int i = 1;
             List<Document> doc = new List<Document>();
             foreach (Test test in Configuration.Disciplines[0].Tests)
@@ -171,24 +170,12 @@ namespace AcademicCenter
                 if (doc.All(d => d.Name != docs.Name))
                     doc.Add(docs);
 
-            if (doc.Count == 0)
-            {
-                panelDoc.Controls.Add(new Label
-                {
-                    Text = @"без документов",
-                    ForeColor = Color.DimGray,
-                    AutoSize = false,
-                    TextAlign = ContentAlignment.MiddleCenter
-                });
-                panelDoc.Controls[panelDoc.Controls.Count - 1].BringToFront();
-            }
-            else
-            {
                 doc.Sort(delegate(Document x, Document y)
                 {
                     if (x.Name == y.Name) return 0;
                     return String.Compare(x.Name, y.Name, StringComparison.Ordinal);
                 });
+                List<Document> result = new List<Document>();
                 foreach (Document d in doc)
                 {
                     if(d.Name==null && d.Path==null) continue;
@@ -200,30 +187,11 @@ namespace AcademicCenter
                     if (currFiltrDoc == 5 && 
                         ( Configuration.videos.Contain(exp) || Configuration.books.Contain(exp) ||
                           Configuration.discourse.Contain(exp) || Configuration.laboratory.Contain(exp)) ) continue;
-                    var b = new Button
-                    {
-                        Tag = d.Path,
-                        Text = d.Name??d.Path,
-                        AutoSize = false,
-                        Dock = DockStyle.Top,
-                        ForeColor = Color.DimGray,
-                        FlatStyle = FlatStyle.Flat,
-                        TextAlign = ContentAlignment.MiddleLeft,
-                        Padding = new Padding(10, 0, 0, 0),
-                        FlatAppearance =
-                        {
-                            BorderSize = 0
-                        }
-                    };
-                    panelDoc.Controls.Add(b);
-                    b.BringToFront();
-                    b.Click += (o, args) =>
-                    {
-                        var tag = ((Button) o)?.Tag;
-                        if (tag != null) Process.Start(tag.ToString());
-                    };
+
+                    result.Add(d);
                 }
-            }
+                if(sender.GetType()==typeof(Button))
+                    new Forms.FormDocView(result, ((Button)sender).Text.ToUpper()).ShowDialog();
             panelDocs.Visible =true;
         }
 
@@ -237,11 +205,8 @@ namespace AcademicCenter
 
         private void docOthers_Click(object sender, EventArgs e)
         {
-            fltrDoc[currFiltrDoc].Top = 0;
             Button l = (Button) sender;
             currFiltrDoc = int.Parse(l.Tag.ToString());
-            fltrDoc[currFiltrDoc].Top = -1;
-            panel1.Focus();
             toolDocs_Click(sender, e);
         }
 
@@ -263,7 +228,7 @@ namespace AcademicCenter
 
         private void FormComplex_Shown(object sender, EventArgs e)
         {
-            fltrDoc[currFiltrDoc].PerformClick();
+
         }
     }
 }
