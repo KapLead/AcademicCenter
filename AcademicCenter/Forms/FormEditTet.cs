@@ -340,7 +340,7 @@ namespace AcademicCenter
         private void button5_Click(object sender, EventArgs e)
         {
             dataGridView1.CellValueChanged -= dataGridView1_CellValueChanged;
-            if (File.Exists(dataGridView1.SelectedCells[0].Value.ToString()))
+            if (File.Exists(dataGridView1.SelectedCells[0].Value?.ToString()))
             {
                 openFileDialog1.InitialDirectory =
                     Path.GetDirectoryName(dataGridView1.SelectedCells[0].Value.ToString());
